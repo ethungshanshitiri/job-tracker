@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T11:16:32.076Z",
+  "generatedAt": "2026-05-20T12:34:40.666Z",
   "totalActive": 3,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-05-20T10:21:57.339Z",
+      "checkedAt": "2026-05-20T11:36:22.532Z",
       "pagesScanned": 40,
       "jobs": [
         {
@@ -42,7 +42,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-05-20T10:23:36.495Z",
+      "checkedAt": "2026-05-20T11:37:55.313Z",
       "pagesScanned": 40,
       "jobs": [
         {
@@ -94,7 +94,7 @@
       "url": "https://nitc.ac.in/recruitments/contract-adhoc-recruitment-non-faculty/engagement-of-apprentice-trainees-graduate-diploma-iti-trade-at-nitc-for-the-year-2026-27",
       "advertDate": "2026-05-19",
       "status": "active",
-      "checkedAt": "2026-05-20T10:51:11.234Z",
+      "checkedAt": "2026-05-20T12:07:08.567Z",
       "pagesScanned": 40,
       "jobs": [
         {
