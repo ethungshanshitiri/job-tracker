@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-20T12:34:40.666Z",
-  "totalActive": 3,
+  "generatedAt": "2026-05-20T13:12:12.612Z",
+  "totalActive": 4,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,8 +10,8 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-05-20T11:36:22.532Z",
-      "pagesScanned": 40,
+      "checkedAt": "2026-05-20T12:37:00.805Z",
+      "pagesScanned": 30,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -42,8 +42,60 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-05-20T11:37:55.313Z",
-      "pagesScanned": 40,
+      "checkedAt": "2026-05-20T12:37:38.867Z",
+      "pagesScanned": 30,
+      "jobs": [
+        {
+          "rank": "Assistant Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "iit-gandhinagar",
+      "name": "IIT Gandhinagar",
+      "type": "IIT",
+      "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
+      "advertDate": null,
+      "status": "active",
+      "checkedAt": "2026-05-20T12:45:55.362Z",
+      "pagesScanned": 30,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -94,8 +146,8 @@
       "url": "https://nitc.ac.in/recruitments/contract-adhoc-recruitment-non-faculty/engagement-of-apprentice-trainees-graduate-diploma-iti-trade-at-nitc-for-the-year-2026-27",
       "advertDate": "2026-05-19",
       "status": "active",
-      "checkedAt": "2026-05-20T12:07:08.567Z",
-      "pagesScanned": 40,
+      "checkedAt": "2026-05-20T12:55:18.515Z",
+      "pagesScanned": 30,
       "jobs": [
         {
           "rank": "Associate Professor",
