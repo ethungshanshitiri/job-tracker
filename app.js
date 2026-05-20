@@ -89,6 +89,7 @@
       .map((inst) => {
         // Filter jobs within each institute
         const filteredJobs = inst.jobs.filter((job) => {
+          if (isExpiredJob(job)) return false;
           if (filters.rank !== "all" && job.rank !== filters.rank) return false;
           if (filters.dept !== "all" && job.departmentFamily !== filters.dept) return false;
           if (filters.mode === "rolling" && !job.rolling) return false;
@@ -136,7 +137,10 @@
   }
 
   function earliestDeadline(jobs) {
-    const deadlines = jobs.map((j) => j.deadline).filter(Boolean);
+    const deadlines = jobs
+      .filter((j) => !isExpiredJob(j))
+      .map((j) => j.deadline)
+      .filter(Boolean);
     if (deadlines.length === 0) return null;
     return deadlines.sort()[0];
   }
@@ -444,6 +448,14 @@
     const deadline = new Date(isoDate).getTime();
     const threshold = Date.now() + days * 24 * 60 * 60 * 1000;
     return deadline <= threshold;
+  }
+
+  function isExpiredJob(job) {
+    if (!job || job.rolling || !job.deadline) return false;
+    const [y, m, d] = job.deadline.split("-").map(Number);
+    const deadline = new Date(y, m - 1, d);
+    deadline.setHours(23, 59, 59, 999);
+    return deadline.getTime() < Date.now();
   }
 
   function debounce(fn, ms) {

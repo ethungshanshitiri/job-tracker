@@ -2,8 +2,8 @@ name: Refresh Jobs & Deploy
 
 on:
   schedule:
-    # Every 12 hours: at 00:30 UTC and 12:30 UTC
-    - cron: "30 0,12 * * *"
+    # GitHub cron uses UTC. These cover Barcelona midnight in winter and summer.
+    - cron: "0 22,23 * * *"
   workflow_dispatch:
     inputs:
       force_deploy:
@@ -15,10 +15,11 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "refresh-jobs-and-deploy"
+  cancel-in-progress: true
 
 jobs:
   scrape-and-deploy:
@@ -26,16 +27,38 @@ jobs:
     timeout-minutes: 30
 
     steps:
+      - name: Check Barcelona midnight
+        id: schedule_gate
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          LOCAL_HOUR=$(TZ=Europe/Madrid date +%H)
+          LOCAL_TIME=$(TZ=Europe/Madrid date '+%Y-%m-%d %H:%M %Z')
+
+          echo "Barcelona time is ${LOCAL_TIME}"
+          if [ "$LOCAL_HOUR" = "00" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping because this UTC trigger is not Barcelona midnight"
+          fi
+
       - name: Checkout repository
+        if: steps.schedule_gate.outputs.should_run == 'true'
         uses: actions/checkout@v4
 
       - name: Set up Node.js
+        if: steps.schedule_gate.outputs.should_run == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
 
       - name: Install dependencies
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
           if [ -f package-lock.json ]; then
             npm ci
@@ -44,6 +67,7 @@ jobs:
           fi
 
       - name: Run scraper
+        if: steps.schedule_gate.outputs.should_run == 'true'
         id: scrape
         run: |
           echo "Starting scrape at $(date -u)"
@@ -59,40 +83,58 @@ jobs:
           echo "Found ${RESULT_COUNT} institutes with active openings"
 
       - name: Validate jobs.json
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
           node -e "
             const fs = require('fs');
             const data = JSON.parse(fs.readFileSync('data/jobs.json','utf8'));
             if (!data.generatedAt) throw new Error('Missing generatedAt');
             if (!Array.isArray(data.results)) throw new Error('Missing results array');
+            const expired = [];
+            const now = Date.now();
+            for (const inst of data.results) {
+              for (const job of inst.jobs || []) {
+                if (!job.rolling && job.deadline && new Date(job.deadline + 'T23:59:59Z').getTime() < now) {
+                  expired.push(inst.id + ' ' + job.deadline);
+                }
+              }
+            }
+            if (expired.length) {
+              throw new Error('Expired fixed-deadline jobs found: ' + expired.join(', '));
+            }
             console.log('jobs.json is valid. Results:', data.results.length);
           "
 
       - name: Commit updated jobs.json
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/jobs.json
           if git diff --staged --quiet; then
-            echo "No changes to jobs.json — skipping commit"
+            echo "No changes to jobs.json, skipping commit"
           else
-            git commit -m "chore: refresh jobs data [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+            git commit -m "chore refresh jobs data $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push
           fi
 
       - name: Setup GitHub Pages
+        if: steps.schedule_gate.outputs.should_run == 'true'
         uses: actions/configure-pages@v4
 
       - name: Upload Pages artifact
+        if: steps.schedule_gate.outputs.should_run == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: "."
 
       - name: Deploy to GitHub Pages
+        if: steps.schedule_gate.outputs.should_run == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
 
       - name: Summary
+        if: steps.schedule_gate.outputs.should_run == 'true'
         run: |
           echo "## Scrape & Deploy Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

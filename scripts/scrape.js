@@ -101,6 +101,10 @@ const CLOSED_SIG = [
   "applications are no longer being accepted",
 ];
 
+const DEADLINE_ONLY_CLOSED_SIG = new Set([
+  "last date of submission of applications is",
+]);
+
 const DEPT_DISPLAY = {
   electrical_engineering:   "Electrical Engineering",
   electronics_communication:"Electronics & Communication Engineering",
@@ -261,7 +265,7 @@ function scoreLinkRelevance(href, anchorText, allDomains) {
   const aLow = anchorText.toLowerCase();
 
   // Must stay on an allowed domain for this institute
-  if (!allDomains.some(d => hLow.includes(d))) return -1;
+  if (!isAllowedDomain(href, allDomains)) return -1;
 
   // Hard skip patterns — if any match, drop immediately
   // Exception: .pdf is in the skip list to avoid random PDFs, but we allow
@@ -269,9 +273,9 @@ function scoreLinkRelevance(href, anchorText, allDomains) {
   const isPdf = hLow.endsWith('.pdf');
   for (const pat of SKIP_PATTERNS) {
     if (pat === '.pdf') continue;  // handled separately below
-    if (hLow.includes(pat) || aLow.includes(pat)) return -1;
+    if (matchesSkipPattern(href, pat) || aLow.includes(pat)) return -1;
   }
- if (isPdf) {
+  if (isPdf) {
     // PDF crawling disabled — causes too many false positives from
     // non-teaching staff recruitment PDFs consuming the page budget.
     // Re-enable once a stricter domain-level PDF allowlist is built.
@@ -295,6 +299,35 @@ function scoreLinkRelevance(href, anchorText, allDomains) {
   if ((href.match(/[&?]/g) || []).length > 4) score -= 2;
 
   return score;
+}
+
+function isAllowedDomain(url, allDomains) {
+  try {
+    const host = new URL(url).hostname.toLowerCase().replace(/^www\./, "");
+    return allDomains.some(domain => {
+      const clean = domain.toLowerCase().replace(/^www\./, "");
+      return host === clean || host.endsWith(`.${clean}`);
+    });
+  } catch {
+    return false;
+  }
+}
+
+function matchesSkipPattern(url, pattern) {
+  const lowPattern = pattern.toLowerCase();
+  const lowUrl = url.toLowerCase();
+
+  if (lowPattern.endsWith("$")) {
+    try {
+      const pathOnly = new URL(lowUrl).pathname.replace(/\/$/, "");
+      const suffix = lowPattern.slice(0, -1).replace(/\/$/, "");
+      return pathOnly.endsWith(suffix);
+    } catch {
+      return lowUrl.endsWith(lowPattern.slice(0, -1));
+    }
+  }
+
+  return lowUrl.includes(lowPattern);
 }
 
 // ─── Text analysis ────────────────────────────────────────────────────────────
@@ -332,7 +365,10 @@ function isExclusionDominated(text) {
 
 function isClosedPage(text) {
   const low = text.toLowerCase();
-  return CLOSED_SIG.some(sig => low.includes(sig));
+  return CLOSED_SIG.some(sig => {
+    if (DEADLINE_ONLY_CLOSED_SIG.has(sig)) return false;
+    return low.includes(sig);
+  });
 }
 
 // ─── Department detection ─────────────────────────────────────────────────────
@@ -403,22 +439,36 @@ const DEADLINE_CONTEXT_WORDS = [
 const CONTEXT_WINDOW = 200;
 
 function parseDeadline(text) {
+  const candidates = findDeadlineDates(text)
+    .filter(dt => !isPastDate(dt));
+
+  if (!candidates.length) return null;
+  candidates.sort((a, b) => a - b);
+  return candidates[0].toISOString().split("T")[0];
+}
+
+function hasExpiredDeadline(text) {
+  const candidates = findDeadlineDates(text);
+  return candidates.length > 0 && candidates.every(isPastDate);
+}
+
+function isPastDate(dt) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const todayMs = today.getTime();
+  return dt.getTime() < today.getTime();
+}
 
+function findDeadlineDates(text) {
   const candidates = [];
 
-  // Validate a date and check it is not in the past.
-  // Returns a Date object if valid and future, otherwise null.
+  // Validate a date. Past dates are retained so expired pages can be rejected.
   const makeDate = (y, m, d) => {
     const yi = +y, mi = +m, di = +d;
     if (mi < 0 || mi > 11) return null;
     if (di < 1 || di > 31) return null;
-    if (yi < 2025 || yi > 2030) return null;
+    if (yi < 2020 || yi > 2035) return null;
     const dt = new Date(yi, mi, di);
     if (dt.getMonth() !== mi) return null;  // month overflow check
-    if (dt.getTime() < todayMs) return null; // strictly reject past dates
     return dt;
   };
 
@@ -465,9 +515,7 @@ function parseDeadline(text) {
     if (dt) candidates.push(dt);
   }
 
-  if (!candidates.length) return null;
-  candidates.sort((a, b) => a - b);
-  return candidates[0].toISOString().split("T")[0];
+  return candidates;
 }
 
 function isRolling(text) {
@@ -602,22 +650,22 @@ async function crawlInstitute(institute) {
     if (worthAnalysing) {
       // ── Gate 2: exclusion dominance ──
       if (!isExclusionDominated(text)) {
-        // ── Gate 3: closed signal ──
-        if (!isClosedPage(text)) {
-          const ranksFound = detectRanks(text);
-          const deptsFound = detectDepartments(text);
-          const ic = INCL_KW.filter(k => textContains(text, k)).length;
+        const ranksFound = detectRanks(text);
+        const deptsFound = detectDepartments(text);
+        const ic = INCL_KW.filter(k => textContains(text, k)).length;
 
-          const isHomepage = url.replace(/\/$/, "") === homepage.replace(/\/$/, "");
-          if (ranksFound.length > 0 && deptsFound.length > 0 && !isHomepage) {
+        const isHomepage = url.replace(/\/$/, "") === homepage.replace(/\/$/, "");
+        if (ranksFound.length > 0 && deptsFound.length > 0 && !isHomepage) {
+          // Rolling detection runs first. If the page says rolling basis,
+          // a nearby date is often context and not a closing deadline.
+          const pr = isRolling(text);
+          const pd = pr ? null : parseDeadline(text);
+          const closed = isClosedPage(text) || (!pr && !pd && hasExpiredDeadline(text));
+
+          if (!closed) {
             anyConfirmed = true;
             ranksFound.forEach(r => allRanks.add(r));
             deptsFound.forEach(d => allDepts.add(d));
-
-            // Rolling detection always runs first. If the page says rolling basis,
-            // any date found is context (e.g. "last updated May 1") not a deadline.
-            const pr = isRolling(text);
-            const pd = pr ? null : parseDeadline(text);
 
             if (!bestUrl || ic > inclCount) {
               bestUrl   = url;
@@ -637,9 +685,9 @@ async function crawlInstitute(institute) {
             }
 
             console.log(`    [match] ${url.replace(homepage, "")||"/"} — ranks: ${ranksFound.join(",")} depts: ${deptsFound.join(",")} rolling: ${pr} deadline: ${pd||"none"}`);
+          } else {
+            console.log(`    [closed] ${url.replace(homepage, "")||"/"}`);
           }
-        } else {
-          console.log(`    [closed] ${url.replace(homepage, "")||"/"}`);
         }
       }
     }
@@ -663,6 +711,11 @@ async function crawlInstitute(institute) {
   const deptsArr = [...allDepts];
   // Honour per-institute force_rolling override from sources.json
   if (institute.force_rolling) rolling = true;
+
+  if (!rolling && !bestDeadline) {
+    console.log(`  [gate4] ${name} — no rolling signal and no future deadline — suppressed`);
+    return null;
+  }
 
   const confidence = scoreConfidence({
     hasRank:     ranksArr.length > 0,
