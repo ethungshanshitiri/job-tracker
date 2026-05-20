@@ -128,15 +128,45 @@ const HEADERS = {
   "Connection": "keep-alive",
 };
 
-async function fetchPage(url, redirectsLeft = 4) {
+class CookieJar {
+  constructor() {
+    this.cookies = new Map();
+  }
+
+  store(setCookieHeaders) {
+    const values = Array.isArray(setCookieHeaders) ? setCookieHeaders : [setCookieHeaders];
+    for (const value of values.filter(Boolean)) {
+      const [pair] = value.split(";");
+      const eq = pair.indexOf("=");
+      if (eq <= 0) continue;
+      this.cookies.set(pair.slice(0, eq).trim(), pair.slice(eq + 1).trim());
+    }
+  }
+
+  header() {
+    return [...this.cookies.entries()].map(([k, v]) => `${k}=${v}`).join("; ");
+  }
+}
+
+async function fetchPage(url, redirectsLeft = 4, options = {}) {
   return new Promise((resolve, reject) => {
     const proto = url.startsWith("https") ? https : http;
-    const req   = proto.get(url, { headers: HEADERS, timeout: TIMEOUT_MS }, (res) => {
+    const headers = {
+      ...HEADERS,
+      ...(options.headers || {}),
+    };
+    if (options.cookieJar?.header()) headers.Cookie = options.cookieJar.header();
+    const req = proto.request(url, {
+      headers,
+      timeout: TIMEOUT_MS,
+      method: options.method || "GET",
+    }, (res) => {
+      options.cookieJar?.store(res.headers["set-cookie"]);
       if ([301,302,303,307,308].includes(res.statusCode) && res.headers.location) {
         if (redirectsLeft === 0) { reject(new Error("Too many redirects")); return; }
         const next = new URL(res.headers.location, url).href;
         res.resume();
-        resolve(fetchPage(next, redirectsLeft - 1));
+        resolve(fetchPage(next, redirectsLeft - 1, options));
         return;
       }
       if (res.statusCode !== 200) {
@@ -145,9 +175,10 @@ async function fetchPage(url, redirectsLeft = 4) {
         return;
       }
       const ct = (res.headers["content-type"] || "").toLowerCase();
-      if (!ct.includes("html") && !ct.includes("text")) {
+      const expected = options.expectedContent || ["html", "text"];
+      if (!expected.some(token => ct.includes(token))) {
         res.resume();
-        reject(new Error(`Non-HTML content-type: ${ct}`));
+        reject(new Error(`Unexpected content-type: ${ct}`));
         return;
       }
       res.setEncoding("utf8");
@@ -164,6 +195,7 @@ async function fetchPage(url, redirectsLeft = 4) {
     });
     req.on("timeout", () => { req.destroy(); reject(new Error("Timeout")); });
     req.on("error", reject);
+    req.end();
   });
 }
 
@@ -252,6 +284,48 @@ function extractLinks(html, baseUrl) {
     } catch { /* malformed URL — skip */ }
   }
   return links;
+}
+
+function extractDynamicDataUrls(html, baseUrl) {
+  const urls = new Set();
+  const re = /data-url=["']([^"']+)["']/gi;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    try {
+      urls.add(new URL(m[1].trim(), baseUrl).href);
+    } catch { /* malformed data-url skipped */ }
+  }
+  return [...urls];
+}
+
+async function fetchDynamicTableText(html, baseUrl, allDomains, cookieJar) {
+  const rows = [];
+  const parts = [];
+  for (const endpoint of extractDynamicDataUrls(html, baseUrl)) {
+    if (!isAllowedDomain(endpoint, allDomains)) continue;
+    try {
+      const body = await fetchPage(endpoint, 4, {
+        cookieJar,
+        method: "POST",
+        expectedContent: ["json", "text"],
+        headers: {
+          "Accept": "application/json, text/javascript, */*;q=0.8",
+          "Referer": baseUrl,
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      });
+      const json = JSON.parse(body);
+      const jsonRows = Array.isArray(json) ? json : (Array.isArray(json.rows) ? json.rows : []);
+      for (const row of jsonRows) {
+        if (!row || typeof row !== "object") continue;
+        rows.push(row);
+        parts.push(Object.values(row).filter(v => v != null).join(" "));
+      }
+    } catch (err) {
+      console.log(`    [dynamic-err] ${endpoint.replace(baseUrl, "")} — ${err.message}`);
+    }
+  }
+  return { text: parts.join("\n"), rows };
 }
 
 // ─── Link scoring ─────────────────────────────────────────────────────────────
@@ -373,11 +447,14 @@ function isClosedPage(text) {
 
 // ─── Department detection ─────────────────────────────────────────────────────
 
-function detectDepartments(text) {
+function detectDepartments(text, options = {}) {
   const low   = text.toLowerCase();
   const found = new Set();
   for (const [phrase, family] of Object.entries(DEPT_MAP)) {
     if (low.includes(phrase)) found.add(family);
+  }
+  if (found.size === 0 && options.assumeAllTargetDepartments && /\b(various|all)\s+faculty\s+positions?\b/.test(low)) {
+    for (const family of new Set(Object.values(DEPT_MAP))) found.add(family);
   }
   return [...found];
 }
@@ -588,6 +665,7 @@ async function crawlInstitute(institute) {
   // { url, depth, score } — scored during link extraction so BFS is priority-aware
   const seedUrls = [homepage, ...(institute.seed_urls || [])];
   const queue    = seedUrls.map(u => ({ url: u, depth: 0, linkScore: 100 }));
+  const cookieJar = new CookieJar();
   let   pagesVisited = 0;
 
   // Accumulate all confirmed findings across pages
@@ -631,12 +709,17 @@ async function crawlInstitute(institute) {
       console.log(`    [pdf] ${url.replace(homepage,'')} — extracted ${text.length} chars`);
     } else {
       try {
-        html = await fetchPage(url);
+        html = await fetchPage(url, 4, { cookieJar });
       } catch (err) {
         console.log(`    [fetch-err] ${url} — ${err.message}`);
         continue;
       }
       text = toText(html);
+      const dynamic = await fetchDynamicTableText(html, url, allDomains, cookieJar);
+      if (dynamic.text) {
+        text += `\n${dynamic.text}`;
+        console.log(`    [dynamic] ${url.replace(homepage, "")||"/"} — ${dynamic.rows.length} row(s)`);
+      }
     }
 
     // ── Gate 1: page must have rank + active-intake phrase + department ──
@@ -644,14 +727,15 @@ async function crawlInstitute(institute) {
     // or archived notices that mention ranks but have no live opening language.
     const pageHasRank = RANKS.some(r => textContains(text, r));
     const pageHasIncl = anyContains(text, INCL_KW);
-    const pageHasDept = detectDepartments(text).length > 0;
+    const deptOptions = { assumeAllTargetDepartments: !!institute.assume_all_target_departments };
+    const pageHasDept = detectDepartments(text, deptOptions).length > 0;
     const worthAnalysing = pageHasRank && pageHasIncl && pageHasDept;
 
     if (worthAnalysing) {
       // ── Gate 2: exclusion dominance ──
       if (!isExclusionDominated(text)) {
         const ranksFound = detectRanks(text);
-        const deptsFound = detectDepartments(text);
+        const deptsFound = detectDepartments(text, deptOptions);
         const ic = INCL_KW.filter(k => textContains(text, k)).length;
 
         const isHomepage = url.replace(/\/$/, "") === homepage.replace(/\/$/, "");
@@ -698,8 +782,7 @@ async function crawlInstitute(institute) {
       for (const { href, anchorText } of links) {
         if (visited.has(href)) continue;
         const s = scoreLinkRelevance(href, anchorText, allDomains);
-        if (s < 0) continue;        // suppressed
-        if (s === 0 && depth >= 2)  continue;  // at hop 3 only follow positive-score links
+        if (s <= 0) continue;
         queue.push({ url: href, depth: depth + 1, linkScore: s });
       }
     }
@@ -794,12 +877,19 @@ async function main() {
     seen.add(i.id);
     return true;
   });
+  const onlyIds = (process.env.SCRAPE_ONLY || "")
+    .split(",")
+    .map(s => s.trim())
+    .filter(Boolean);
+  const crawlTargets = onlyIds.length
+    ? unique.filter(i => onlyIds.includes(i.id))
+    : unique;
 
-  console.log(`Institutes to crawl: ${unique.length}\n`);
+  console.log(`Institutes to crawl: ${crawlTargets.length}\n`);
 
   const results = [];
 
-  for (const institute of unique) {
+  for (const institute of crawlTargets) {
     console.log(`\n→ ${institute.name}  (${institute.homepage})`);
     let result;
     try {
