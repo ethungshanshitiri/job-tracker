@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-28T20:06:16.561Z",
-  "totalActive": 4,
+  "generatedAt": "2026-05-20T11:16:32.076Z",
+  "totalActive": 3,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-04-28T19:06:21.100Z",
+      "checkedAt": "2026-05-20T10:21:57.339Z",
       "pagesScanned": 40,
       "jobs": [
         {
@@ -42,7 +42,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-04-28T19:07:54.660Z",
+      "checkedAt": "2026-05-20T10:23:36.495Z",
       "pagesScanned": 40,
       "jobs": [
         {
@@ -88,105 +88,23 @@
       ]
     },
     {
-      "id": "iit-gandhinagar",
-      "name": "IIT Gandhinagar",
-      "type": "IIT",
-      "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
-      "advertDate": null,
-      "status": "active",
-      "checkedAt": "2026-04-28T19:26:03.961Z",
-      "pagesScanned": 40,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "notes": null
-        }
-      ]
-    },
-    {
-      "id": "nit-uttarakhand",
-      "name": "NIT Uttarakhand",
+      "id": "nit-calicut",
+      "name": "NIT Calicut",
       "type": "NIT",
-      "url": "https://nituk.ac.in/recruitments",
-      "advertDate": null,
+      "url": "https://nitc.ac.in/recruitments/contract-adhoc-recruitment-non-faculty/engagement-of-apprentice-trainees-graduate-diploma-iti-trade-at-nitc-for-the-year-2026-27",
+      "advertDate": "2026-05-19",
       "status": "active",
-      "checkedAt": "2026-04-28T20:04:04.645Z",
+      "checkedAt": "2026-05-20T10:51:11.234Z",
       "pagesScanned": 40,
       "jobs": [
         {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "medium",
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "medium",
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "medium",
-          "notes": null
-        },
-        {
           "rank": "Associate Professor",
           "department": "Electrical Engineering",
           "departmentFamily": "electrical_engineering",
           "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "medium",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
           "notes": null
         },
         {
@@ -194,9 +112,9 @@
           "department": "Electronics & Communication Engineering",
           "departmentFamily": "electronics_communication",
           "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "medium",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
           "notes": null
         },
         {
@@ -204,9 +122,9 @@
           "department": "Computer Science & Engineering",
           "departmentFamily": "computer_science",
           "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "medium",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
           "notes": null
         }
       ]
