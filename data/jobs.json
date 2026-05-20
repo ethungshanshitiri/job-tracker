@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-20T14:03:52.915Z",
-  "totalActive": 5,
+  "generatedAt": "2026-05-20T15:04:03.470Z",
+  "totalActive": 6,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,8 +10,8 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-05-20T13:29:23.839Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-05-20T14:45:56.354Z",
+      "pagesScanned": 24,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -42,7 +42,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-05-20T13:30:02.049Z",
+      "checkedAt": "2026-05-20T14:46:25.389Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -88,13 +88,85 @@
       ]
     },
     {
+      "id": "iit-kharagpur",
+      "name": "IIT Kharagpur",
+      "type": "IIT",
+      "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
+      "advertDate": null,
+      "status": "active",
+      "checkedAt": "2026-05-20T14:47:57.043Z",
+      "pagesScanned": 2,
+      "jobs": [
+        {
+          "rank": "Assistant Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "notes": null
+        }
+      ]
+    },
+    {
       "id": "iit-gandhinagar",
       "name": "IIT Gandhinagar",
       "type": "IIT",
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-05-20T13:38:12.435Z",
+      "checkedAt": "2026-05-20T14:51:33.807Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -143,11 +215,11 @@
       "id": "nit-calicut",
       "name": "NIT Calicut",
       "type": "NIT",
-      "url": "https://nitc.ac.in/recruitments/contract-adhoc-recruitment-non-faculty/engagement-of-apprentice-trainees-graduate-diploma-iti-trade-at-nitc-for-the-year-2026-27",
+      "url": "https://nitc.ac.in/faculty-recruitments",
       "advertDate": "2026-05-19",
       "status": "active",
-      "checkedAt": "2026-05-20T13:47:44.656Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-05-20T14:57:42.207Z",
+      "pagesScanned": 9,
       "jobs": [
         {
           "rank": "Associate Professor",
@@ -188,8 +260,8 @@
       "url": "https://www.nitmanipur.ac.in/ViewAll.aspx?view=Vacancies",
       "advertDate": "2025-10-27",
       "status": "active",
-      "checkedAt": "2026-05-20T13:57:37.368Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-05-20T15:02:14.235Z",
+      "pagesScanned": 4,
       "jobs": [
         {
           "rank": "Assistant Professor",
