@@ -347,9 +347,11 @@
       "homepage": "https://www.nits.ac.in",
       "domain": "nits.ac.in",
       "seed_urls": [
-        "https://www.nits.ac.in/employment",
-        "http://recruitment.nits.ac.in/"
-      ]
+        "https://www.nits.ac.in/recruitment-view-all",
+        "https://www.nits.ac.in/faculty-recruitment-2026",
+        "https://www.nits.ac.in/storage/files/faculty-advertisement-2026.pdf"
+      ],
+      "canonical_url": "https://www.nits.ac.in/faculty-recruitment-2026"
     },
     {
       "id": "nit-nagpur",

@@ -181,11 +181,13 @@
 
     // Count unique mode types
     const hasRolling = inst.jobs.some((j) => j.rolling);
-    const hasDeadline = inst.jobs.some((j) => !j.rolling);
+    const hasDeadline = inst.jobs.some((j) => !j.rolling && j.deadline);
+    const hasUnknown = inst.jobs.some((j) => !j.rolling && !j.deadline);
 
     const modeLabels = [];
     if (hasRolling) modeLabels.push('<span class="status-pill status-rolling">Rolling</span>');
     if (hasDeadline) modeLabels.push('<span class="status-pill status-deadline">Deadline</span>');
+    if (hasUnknown) modeLabels.push('<span class="status-pill status-unknown">See page</span>');
 
     card.innerHTML = `
       <div class="card-header" role="button" tabindex="0" aria-expanded="false" aria-controls="jobs-${inst.id}">

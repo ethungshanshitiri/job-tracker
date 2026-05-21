@@ -653,6 +653,9 @@ function findDeadlineDates(text) {
   // Check whether a date at position `index` in the text has deadline context
   // within CONTEXT_WINDOW characters before or after it.
   const hasDeadlineContext = (index, matchLength) => {
+    const beforeDate = text.slice(Math.max(0, index - 90), index).toLowerCase();
+    if (/\b(opening|commencement|start)\s+date\b/.test(beforeDate)) return false;
+
     const start  = Math.max(0, index - CONTEXT_WINDOW);
     const end    = Math.min(text.length, index + matchLength + CONTEXT_WINDOW);
     const window = text.slice(start, end).toLowerCase();
@@ -745,13 +748,30 @@ function isOpenEndedRolling(text) {
   );
 }
 
+function hasActiveUndatedApplication(text) {
+  const low = text.toLowerCase().replace(/\s+/g, " ");
+  const hasRelativeClosingDate =
+    low.includes("closing date of online application") &&
+    (low.includes("after publication") || low.includes("after the publication"));
+  const hasApplicationLink =
+    low.includes("may apply through the following link") ||
+    low.includes("apply through the following link") ||
+    low.includes("interested and eligible candidate may apply");
+  const hasOnlineOpening =
+    low.includes("opening date of online application") ||
+    low.includes("invites online application from") ||
+    low.includes("invites online applications from");
+
+  return hasRelativeClosingDate && (hasApplicationLink || hasOnlineOpening);
+}
+
 // ─── Confidence scoring ───────────────────────────────────────────────────────
 
-function scoreConfidence({ hasRank, deptCount, hasDeadline, rolling, inclCount }) {
+function scoreConfidence({ hasRank, deptCount, hasDeadline, rolling, activeUndated, inclCount }) {
   let s = 0;
   if (hasRank)      s += 3;
   if (deptCount > 0) s += 2;
-  if (hasDeadline || rolling) s += 2;
+  if (hasDeadline || rolling || activeUndated) s += 2;
   if (inclCount >= 2) s += 1;
   if (s >= 7) return "high";
   if (s >= 4) return "medium";
@@ -789,6 +809,7 @@ async function crawlInstitute(institute) {
   let   bestUrl   = null;
   let   bestDeadline = null;
   let   rolling   = false;
+  let   activeUndated = false;
   let   advertDate = null;   // published date of the advertisement e.g. "Dated 27.02.2026"
   let   inclCount = 0;
   let   anyConfirmed = false;
@@ -864,13 +885,14 @@ async function crawlInstitute(institute) {
           // a nearby date is often context and not a closing deadline.
           const pr = isRolling(text);
           const pd = parseDeadline(text);
+          const pa = hasActiveUndatedApplication(text);
           const onlyExpiredDeadline = !pd && hasExpiredDeadline(text);
           const closed =
             (!pd && isClosedPage(text)) ||
             (!pr && onlyExpiredDeadline) ||
             (pr && onlyExpiredDeadline && !isOpenEndedRolling(text) && !institute.force_rolling);
 
-          if (!closed && (pr || pd)) {
+          if (!closed && (pr || pd || pa)) {
             anyConfirmed = true;
             for (const rank of ranksFound) {
               for (const deptFamily of deptsFound) {
@@ -886,9 +908,10 @@ async function crawlInstitute(institute) {
               if (!bestDeadline || pd < bestDeadline) bestDeadline = pd;
             }
             if (pr) rolling = true;
+            if (pa && !pd && !pr) activeUndated = true;
             // Capture "Dated DD.MM.YYYY" or "Dated DD/MM/YYYY" as advertisement date
             if (!advertDate) {
-              const adm = text.match(/dated\s+(\d{1,2})[.\/](\d{1,2})[.\/](20\d{2})/i);
+              const adm = text.match(/\bdate(?:d)?\s*:?\s+(\d{1,2})[.\/-](\d{1,2})[.\/-](20\d{2})/i);
               if (adm) {
                 const [,d,m,y] = adm;
                 advertDate = `${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`;
@@ -923,7 +946,7 @@ async function crawlInstitute(institute) {
   // Honour per-institute force_rolling override from sources.json
   if (institute.force_rolling) rolling = true;
 
-  if (!rolling && !bestDeadline) {
+  if (!rolling && !bestDeadline && !activeUndated) {
     console.log(`  [gate4] ${name} — no rolling signal and no future deadline — suppressed`);
     return null;
   }
@@ -933,6 +956,7 @@ async function crawlInstitute(institute) {
     deptCount:   deptsArr.length,
     hasDeadline: !!bestDeadline,
     rolling,
+    activeUndated,
     inclCount,
   });
 
@@ -940,7 +964,7 @@ async function crawlInstitute(institute) {
   // Suppress if medium confidence with no deadline, no rolling, AND low inclusion count.
   // A page with 3+ strong inclusion keywords passes even without a deadline —
   // it is clearly a recruitment page (e.g. IIT Madras /careers/prospective-faculty).
-  if (confidence === "medium" && !rolling && !bestDeadline && inclCount < 3) {
+  if (confidence === "medium" && !rolling && !bestDeadline && !activeUndated && inclCount < 3) {
     console.log(`  [gate4] ${name} — medium conf, no deadline, no rolling, only ${inclCount} inclusion kw — suppressed`);
     return null;
   }
@@ -963,7 +987,9 @@ async function crawlInstitute(institute) {
                         : "See official page",
       confidence,
       deadlineType: rolling && bestDeadline ? "rolling_cutoff" : (bestDeadline ? "application_deadline" : null),
-      notes: confidence === "low" ? "Low confidence — verify manually on official page" : null,
+      notes: activeUndated && !bestDeadline
+        ? "Active application page found, but the closing date is stated relatively. Verify on official page."
+        : (confidence === "low" ? "Low confidence — verify manually on official page" : null),
     });
   }
 
