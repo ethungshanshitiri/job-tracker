@@ -13,6 +13,10 @@
         "https://facapp.iitm.ac.in/"
       ],
       "force_rolling": true,
+      "assume_department_families": [
+        "electrical_engineering",
+        "computer_science"
+      ],
       "extra_domains": [
         "facapp.iitm.ac.in"
       ]
@@ -34,9 +38,25 @@
       "homepage": "https://home.iitd.ac.in",
       "domain": "iitd.ac.in",
       "seed_urls": [
-        "https://home.iitd.ac.in/jobs-iitd/index.php"
+        "https://home.iitd.ac.in/jobs-iitd/index.php",
+        "https://home.iitd.ac.in/jobs-iitd/uploads/Updated%20Rollling%20Advt.%20IITD%202026%20AP-1%20-%2023.4.2026.pdf",
+        "https://home.iitd.ac.in/jobs-iitd/uploads/Updated-Rolling-Advt.IITD-2026-PROF-1-17.4.2026.pdf"
       ],
-      "force_rolling": true
+      "canonical_url": "https://home.iitd.ac.in/jobs-iitd/index.php",
+      "force_rolling": true,
+      "analysis_skip_patterns": [
+        "jobs-iitd/index"
+      ],
+      "link_skip_patterns": [
+        "iitd%202025",
+        "iitd 2025",
+        "iitd%202024",
+        "iitd 2024",
+        "2024%20ap",
+        "2024 ap",
+        "2024%20prof",
+        "2024 prof"
+      ]
     },
     {
       "id": "iit-kanpur",

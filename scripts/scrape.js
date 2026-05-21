@@ -38,7 +38,7 @@ import { fileURLToPath } from "url";
 // If not installed, PDF links are skipped gracefully.
 let pdfParse = null;
 try {
-  const mod = await import("pdf-parse");
+  const mod = await import("pdf-parse/lib/pdf-parse.js");
   pdfParse = mod.default || mod;
 } catch {
   // PDF support disabled — pdf-parse not installed
@@ -205,7 +205,7 @@ async function fetchPage(url, redirectsLeft = 4, options = {}) {
  * Fetch a PDF URL and extract its text using pdf-parse.
  * Returns plain text string, or null if pdf-parse is not available or fetch fails.
  */
-async function fetchPdfText(url) {
+async function fetchPdfText(url, redirectsLeft = 4) {
   if (!pdfParse) return null;
   return new Promise((resolve) => {
     const proto = url.startsWith('https') ? https : http;
@@ -213,11 +213,15 @@ async function fetchPdfText(url) {
       headers: { ...HEADERS, Accept: 'application/pdf,*/*' },
       timeout: TIMEOUT_MS,
     }, (res) => {
+      if ([301,302,303,307,308].includes(res.statusCode) && res.headers.location) {
+        if (redirectsLeft === 0) { res.resume(); resolve(null); return; }
+        const next = new URL(res.headers.location, url).href;
+        res.resume();
+        resolve(fetchPdfText(next, redirectsLeft - 1));
+        return;
+      }
       if (res.statusCode !== 200) { res.resume(); resolve(null); return; }
       const ct = (res.headers['content-type'] || '').toLowerCase();
-      if (!ct.includes('pdf') && !url.toLowerCase().endsWith('.pdf')) {
-        res.resume(); resolve(null); return;
-      }
       const chunks = [];
       let bytes = 0;
       res.on('data', chunk => {
@@ -227,12 +231,30 @@ async function fetchPdfText(url) {
       });
       res.on('end',   () => {
         const buf = Buffer.concat(chunks);
+        if (!ct.includes('pdf') && looksLikeHtml(buf)) {
+          const embedded = extractEmbeddedPdfUrl(buf.toString('utf8'), url);
+          if (embedded && embedded !== url) {
+            resolve(fetchPdfText(embedded, redirectsLeft - 1));
+            return;
+          }
+          resolve(null);
+          return;
+        }
         pdfParse(buf)
           .then(data => resolve(data.text || null))
           .catch(() => resolve(null));
       });
       res.on('close', () => {
         const buf = Buffer.concat(chunks);
+        if (!ct.includes('pdf') && looksLikeHtml(buf)) {
+          const embedded = extractEmbeddedPdfUrl(buf.toString('utf8'), url);
+          if (embedded && embedded !== url) {
+            resolve(fetchPdfText(embedded, redirectsLeft - 1));
+            return;
+          }
+          resolve(null);
+          return;
+        }
         pdfParse(buf)
           .then(data => resolve(data.text || null))
           .catch(() => resolve(null));
@@ -244,11 +266,27 @@ async function fetchPdfText(url) {
   });
 }
 
+function looksLikeHtml(buf) {
+  return buf.slice(0, 512).toString('utf8').toLowerCase().includes('<html');
+}
+
+function extractEmbeddedPdfUrl(html, baseUrl) {
+  const re = /<(?:embed|iframe)[^>]+src=["']([^"']+pdf[^"']*)["']/i;
+  const m = html.match(re);
+  if (!m) return null;
+  try {
+    return new URL(m[1].replace(/&amp;/g, '&'), baseUrl).href;
+  } catch {
+    return null;
+  }
+}
+
 // ─── HTML utilities ───────────────────────────────────────────────────────────
 
 /** Decode HTML entities and strip tags, returning readable plain text. */
 function toText(html) {
   return html
+    .replace(/<!--[\s\S]*?-->/g, " ")
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
     .replace(/<style[\s\S]*?<\/style>/gi,   " ")
     .replace(/<br\s*\/?>/gi, "\n")
@@ -265,13 +303,23 @@ function toText(html) {
     .trim();
 }
 
+function toAnalysisText(html) {
+  return toText(html
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, " ")
+    .replace(/<nav\b[\s\S]*?<\/nav>/gi, " ")
+    .replace(/<header\b[\s\S]*?<\/header>/gi, " ")
+    .replace(/<footer\b[\s\S]*?<\/footer>/gi, " ")
+    .replace(/<aside\b[\s\S]*?<\/aside>/gi, " "));
+}
+
 /**
  * Extract all href links from raw HTML. Returns array of { href, anchorText }.
  * Only keeps absolute or root-relative links; resolves relative ones against base.
  */
 function extractLinks(html, baseUrl) {
   const links = [];
-  const re    = /<a[^>]+href=["']([^"'#\s]+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+  const re    = /<a[^>]+href=["']([^"'#]+)["'][^>]*>([\s\S]*?)<\/a>/gi;
   let m;
   while ((m = re.exec(html)) !== null) {
     const raw    = m[1].trim();
@@ -334,7 +382,7 @@ async function fetchDynamicTableText(html, baseUrl, allDomains, cookieJar) {
  * Returns a priority score for a link based on how recruitment-relevant it looks.
  * Higher is better. Returns -1 to suppress the link entirely.
  */
-function scoreLinkRelevance(href, anchorText, allDomains) {
+function scoreLinkRelevance(href, anchorText, allDomains, institute = {}) {
   const hLow = href.toLowerCase();
   const aLow = anchorText.toLowerCase();
 
@@ -345,15 +393,19 @@ function scoreLinkRelevance(href, anchorText, allDomains) {
   // Exception: .pdf is in the skip list to avoid random PDFs, but we allow
   // PDFs that look recruitment-relevant (anchor or href contains a recruitment word)
   const isPdf = hLow.endsWith('.pdf');
-  for (const pat of SKIP_PATTERNS) {
+  const skipPatterns = [...SKIP_PATTERNS, ...(institute.link_skip_patterns || [])];
+  for (const pat of skipPatterns) {
     if (pat === '.pdf') continue;  // handled separately below
+    if (pat === 'displaypage.aspx' && hasStrongRecruitmentAnchor(aLow, hLow)) continue;
+    if (pat === 'rti') {
+      if (isRtiUrl(href)) return -1;
+      continue;
+    }
     if (matchesSkipPattern(href, pat) || aLow.includes(pat)) return -1;
   }
   if (isPdf) {
-    // PDF crawling disabled — causes too many false positives from
-    // non-teaching staff recruitment PDFs consuming the page budget.
-    // Re-enable once a stricter domain-level PDF allowlist is built.
-    return -1;
+    const hasRecruitSignal = hasStrongRecruitmentAnchor(aLow, hLow);
+    return hasRecruitSignal ? 8 : -1;
   }
 
   let score = 0;
@@ -373,6 +425,24 @@ function scoreLinkRelevance(href, anchorText, allDomains) {
   if ((href.match(/[&?]/g) || []).length > 4) score -= 2;
 
   return score;
+}
+
+function isRtiUrl(url) {
+  try {
+    const u = new URL(url);
+    return /(^|\/|[-_])rti($|\/|[-_])/.test(u.pathname.toLowerCase());
+  } catch {
+    return false;
+  }
+}
+
+function hasStrongRecruitmentAnchor(anchorText, hrefText) {
+  const combined = `${anchorText} ${hrefText}`.toLowerCase();
+  const hasFaculty = combined.includes("faculty");
+  const hasProfessor = /\b(professor|prof|associate|assistant)\b|\bap[-_ ]?\d/.test(combined);
+  const hasRecruit = /\b(recruitment|recruit|rolling|advertisement|advt|position|vacancy|application)\b/.test(combined);
+  const hasRank = RANKS.some(rank => combined.includes(rank));
+  return (hasFaculty && hasRecruit) || (hasProfessor && hasRecruit) || hasRank;
 }
 
 function isAllowedDomain(url, allDomains) {
@@ -453,6 +523,9 @@ function detectDepartments(text, options = {}) {
   for (const [phrase, family] of Object.entries(DEPT_MAP)) {
     if (low.includes(phrase)) found.add(family);
   }
+  if (found.size === 0 && Array.isArray(options.assumeDepartmentFamilies) && /\b(various|all)\s+(academic\s+units|departments|faculty\s+positions?)\b/.test(low)) {
+    for (const family of options.assumeDepartmentFamilies) found.add(family);
+  }
   if (found.size === 0 && options.assumeAllTargetDepartments && /\b(various|all)\s+faculty\s+positions?\b/.test(low)) {
     for (const family of new Set(Object.values(DEPT_MAP))) found.add(family);
   }
@@ -464,6 +537,13 @@ function detectDepartments(text, options = {}) {
 function detectRanks(text) {
   const low   = text.toLowerCase();
   const found = [];
+  const lead = low.slice(0, 2500);
+  if (/for\s+the\s+post\s+of\s+associate\s+professor\s+and\s+professor/.test(lead)) {
+    return ["Associate Professor"];
+  }
+  if (/for\s+the\s+post\s+of\s+assistant\s+professor/.test(lead)) {
+    return ["Assistant Professor"];
+  }
   if (low.includes("assistant professor")) found.push("Assistant Professor");
   if (low.includes("associate professor")) found.push("Associate Professor");
   return found;
@@ -504,11 +584,8 @@ const DEADLINE_CONTEXT_WORDS = [
   "open until",
   "valid till",
   "valid until",
-  "before",
-  "within",
   "upto",
   "up to",
-  "by",
 ];
 
 // How many characters around a date we look for context words.
@@ -544,8 +621,8 @@ function findDeadlineDates(text) {
     if (mi < 0 || mi > 11) return null;
     if (di < 1 || di > 31) return null;
     if (yi < 2020 || yi > 2035) return null;
-    const dt = new Date(yi, mi, di);
-    if (dt.getMonth() !== mi) return null;  // month overflow check
+    const dt = new Date(Date.UTC(yi, mi, di, 12, 0, 0));
+    if (dt.getUTCMonth() !== mi) return null;  // month overflow check
     return dt;
   };
 
@@ -558,8 +635,8 @@ function findDeadlineDates(text) {
     return DEADLINE_CONTEXT_WORDS.some(word => window.includes(word));
   };
 
-  // ── Pattern 1: DD/MM/YYYY or DD-MM-YYYY ──
-  for (const m of text.matchAll(/\b(\d{1,2})[\/\-](\d{1,2})[\/\-](20\d{2})\b/g)) {
+  // ── Pattern 1: DD/MM/YYYY, DD-MM-YYYY, or DD.MM.YYYY ──
+  for (const m of text.matchAll(/\b(\d{1,2})[\/\-.](\d{1,2})[\/\-.](20\d{2})\b/g)) {
     if (!hasDeadlineContext(m.index, m[0].length)) continue;
     const dt = makeDate(m[3], +m[2] - 1, +m[1]);  // DD/MM/YYYY
     if (dt) candidates.push(dt);
@@ -573,7 +650,7 @@ function findDeadlineDates(text) {
   }
 
   // ── Pattern 3: DD Month YYYY  (e.g. "30 April 2025", "30 Apr 2025") ──
-  const re3 = /\b(\d{1,2})\s+(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)\.?\s+(20\d{2})\b/gi;
+  const re3 = /\b(\d{1,2})\s*(?:st|nd|rd|th)?\s+(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)\.?\s+(20\d{2})\b/gi;
   for (const m of text.matchAll(re3)) {
     if (!hasDeadlineContext(m.index, m[0].length)) continue;
     const mi = MONTH_IDX[m[2].toLowerCase()];
@@ -583,7 +660,7 @@ function findDeadlineDates(text) {
   }
 
   // ── Pattern 4: Month DD, YYYY  (e.g. "April 30, 2025") ──
-  const re4 = /\b(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)\.?\s+(\d{1,2})[,\s]+(20\d{2})\b/gi;
+  const re4 = /\b(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)\.?\s+(\d{1,2})\s*(?:st|nd|rd|th)?[,\s]+(20\d{2})\b/gi;
   for (const m of text.matchAll(re4)) {
     if (!hasDeadlineContext(m.index, m[0].length)) continue;
     const mi = MONTH_IDX[m[1].toLowerCase()];
@@ -629,6 +706,21 @@ function isRolling(text) {
   );
 }
 
+function isOpenEndedRolling(text) {
+  const low = text.toLowerCase();
+  return (
+    low.includes("throughout the year") ||
+    low.includes("there is no last date") ||
+    low.includes("no last date for applications") ||
+    low.includes("no specific last date") ||
+    low.includes("applications will be processed periodically") ||
+    low.includes("applications are accepted throughout the year") ||
+    low.includes("applications will be accepted online throughout") ||
+    low.includes("open until filled") ||
+    low.includes("until the position is filled")
+  );
+}
+
 // ─── Confidence scoring ───────────────────────────────────────────────────────
 
 function scoreConfidence({ hasRank, deptCount, hasDeadline, rolling, inclCount }) {
@@ -669,8 +761,7 @@ async function crawlInstitute(institute) {
   let   pagesVisited = 0;
 
   // Accumulate all confirmed findings across pages
-  const allRanks  = new Set();
-  const allDepts  = new Set();
+  const confirmedJobs = new Map();
   let   bestUrl   = null;
   let   bestDeadline = null;
   let   rolling   = false;
@@ -714,7 +805,7 @@ async function crawlInstitute(institute) {
         console.log(`    [fetch-err] ${url} — ${err.message}`);
         continue;
       }
-      text = toText(html);
+      text = toAnalysisText(html);
       const dynamic = await fetchDynamicTableText(html, url, allDomains, cookieJar);
       if (dynamic.text) {
         text += `\n${dynamic.text}`;
@@ -725,9 +816,14 @@ async function crawlInstitute(institute) {
     // ── Gate 1: page must have rank + active-intake phrase + department ──
     // Requiring all three prevents false positives from general faculty pages
     // or archived notices that mention ranks but have no live opening language.
-    const pageHasRank = RANKS.some(r => textContains(text, r));
+    const skipAnalysis = (institute.analysis_skip_patterns || [])
+      .some(pattern => url.toLowerCase().includes(pattern.toLowerCase()));
+    const pageHasRank = !skipAnalysis && RANKS.some(r => textContains(text, r));
     const pageHasIncl = anyContains(text, INCL_KW);
-    const deptOptions = { assumeAllTargetDepartments: !!institute.assume_all_target_departments };
+    const deptOptions = {
+      assumeAllTargetDepartments: !!institute.assume_all_target_departments,
+      assumeDepartmentFamilies: institute.assume_department_families || [],
+    };
     const pageHasDept = detectDepartments(text, deptOptions).length > 0;
     const worthAnalysing = pageHasRank && pageHasIncl && pageHasDept;
 
@@ -743,13 +839,20 @@ async function crawlInstitute(institute) {
           // Rolling detection runs first. If the page says rolling basis,
           // a nearby date is often context and not a closing deadline.
           const pr = isRolling(text);
-          const pd = pr ? null : parseDeadline(text);
-          const closed = isClosedPage(text) || (!pr && !pd && hasExpiredDeadline(text));
+          const pd = parseDeadline(text);
+          const onlyExpiredDeadline = !pd && hasExpiredDeadline(text);
+          const closed =
+            (!pd && isClosedPage(text)) ||
+            (!pr && onlyExpiredDeadline) ||
+            (pr && onlyExpiredDeadline && !isOpenEndedRolling(text) && !institute.force_rolling);
 
-          if (!closed) {
+          if (!closed && (pr || pd)) {
             anyConfirmed = true;
-            ranksFound.forEach(r => allRanks.add(r));
-            deptsFound.forEach(d => allDepts.add(d));
+            for (const rank of ranksFound) {
+              for (const deptFamily of deptsFound) {
+                confirmedJobs.set(`${rank}|${deptFamily}`, { rank, deptFamily });
+              }
+            }
 
             if (!bestUrl || ic > inclCount) {
               bestUrl   = url;
@@ -781,7 +884,7 @@ async function crawlInstitute(institute) {
       const links = extractLinks(html, url);
       for (const { href, anchorText } of links) {
         if (visited.has(href)) continue;
-        const s = scoreLinkRelevance(href, anchorText, allDomains);
+        const s = scoreLinkRelevance(href, anchorText, allDomains, institute);
         if (s <= 0) continue;
         queue.push({ url: href, depth: depth + 1, linkScore: s });
       }
@@ -790,8 +893,9 @@ async function crawlInstitute(institute) {
 
   if (!anyConfirmed) return null;
 
-  const ranksArr = [...allRanks];
-  const deptsArr = [...allDepts];
+  const confirmedJobList = [...confirmedJobs.values()];
+  const ranksArr = [...new Set(confirmedJobList.map(j => j.rank))];
+  const deptsArr = [...new Set(confirmedJobList.map(j => j.deptFamily))];
   // Honour per-institute force_rolling override from sources.json
   if (institute.force_rolling) rolling = true;
 
@@ -823,28 +927,27 @@ async function crawlInstitute(institute) {
 
   // Build flat job entries: one per rank × department
   const jobs = [];
-  for (const rank of ranksArr) {
-    for (const deptFamily of deptsArr) {
-      jobs.push({
-        rank,
-        department:       DEPT_DISPLAY[deptFamily] || deptFamily,
-        departmentFamily: deptFamily,
-        deadline:         bestDeadline || null,
-        rolling,
-        applicationMode:  rolling    ? "Rolling basis"
-                          : bestDeadline ? "Fixed deadline"
-                          : "See official page",
-        confidence,
-        notes: confidence === "low" ? "Low confidence — verify manually on official page" : null,
-      });
-    }
+  for (const { rank, deptFamily } of confirmedJobList) {
+    jobs.push({
+      rank,
+      department:       DEPT_DISPLAY[deptFamily] || deptFamily,
+      departmentFamily: deptFamily,
+      deadline:         bestDeadline || null,
+      rolling,
+      applicationMode:  rolling    ? "Rolling basis"
+                        : bestDeadline ? "Fixed deadline"
+                        : "See official page",
+      confidence,
+      deadlineType: rolling && bestDeadline ? "rolling_cutoff" : (bestDeadline ? "application_deadline" : null),
+      notes: confidence === "low" ? "Low confidence — verify manually on official page" : null,
+    });
   }
 
   return {
     id,
     name,
     type: institute.instType,
-    url:  bestUrl || homepage,
+    url:  institute.canonical_url || bestUrl || homepage,
     advertDate,
     status:    "active",
     checkedAt,

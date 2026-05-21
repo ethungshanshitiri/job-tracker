@@ -1,6 +1,6 @@
 # Faculty Job Tracker — IITs & NITs
 
-A static website that tracks current **Assistant Professor** and **Associate Professor** openings across all IITs and NITs in India. Data refreshes automatically every 12 hours via GitHub Actions and deploys to GitHub Pages.
+A static website that tracks current **Assistant Professor** and **Associate Professor** openings across all IITs and NITs in India. Data refreshes automatically daily at Barcelona midnight via GitHub Actions and deploys to GitHub Pages.
 
 ---
 

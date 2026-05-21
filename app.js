@@ -321,7 +321,8 @@
     let deadlineHtml = "";
     if (job.deadline) {
       const isSoon = isWithinDays(job.deadline, 30);
-      deadlineHtml = `<span class="job-deadline ${isSoon ? "soon" : ""}">Due ${formatDate(job.deadline)}</span>`;
+      const deadlineLabel = job.rolling ? "Next cutoff" : "Due";
+      deadlineHtml = `<span class="job-deadline ${isSoon ? "soon" : ""}">${deadlineLabel} ${formatDate(job.deadline)}</span>`;
     }
 
     const conf      = job.confidence || "medium";
