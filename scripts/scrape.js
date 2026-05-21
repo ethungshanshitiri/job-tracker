@@ -74,6 +74,7 @@ const MAX_HOPS        = CFG.max_hops;               // 3
 const DELAY_MS        = CFG.request_delay_ms;       // 1200
 const TIMEOUT_MS      = CFG.timeout_ms;             // 15000
 const MAX_BODY_BYTES  = CFG.max_body_bytes;          // 2 MB
+const MAX_PDF_BYTES   = CFG.max_pdf_bytes || Math.max(MAX_BODY_BYTES, 12 * 1024 * 1024);
 const MAX_PAGES       = CFG.max_pages_per_institute; // 40
 
 const REC_PATTERNS  = CFG.recruitment_link_patterns.map(s => s.toLowerCase());
@@ -209,61 +210,84 @@ async function fetchPdfText(url, redirectsLeft = 4) {
   if (!pdfParse) return null;
   return new Promise((resolve) => {
     const proto = url.startsWith('https') ? https : http;
+    let settled = false;
+    const done = (value) => {
+      if (settled) return;
+      settled = true;
+      resolve(value);
+    };
     const req = proto.get(url, {
       headers: { ...HEADERS, Accept: 'application/pdf,*/*' },
       timeout: TIMEOUT_MS,
     }, (res) => {
       if ([301,302,303,307,308].includes(res.statusCode) && res.headers.location) {
-        if (redirectsLeft === 0) { res.resume(); resolve(null); return; }
+        if (redirectsLeft === 0) { res.resume(); done(null); return; }
         const next = new URL(res.headers.location, url).href;
         res.resume();
-        resolve(fetchPdfText(next, redirectsLeft - 1));
+        done(fetchPdfText(next, redirectsLeft - 1));
         return;
       }
-      if (res.statusCode !== 200) { res.resume(); resolve(null); return; }
+      if (res.statusCode !== 200) { res.resume(); done(null); return; }
       const ct = (res.headers['content-type'] || '').toLowerCase();
       const chunks = [];
       let bytes = 0;
+      let truncated = false;
       res.on('data', chunk => {
         bytes += chunk.length;
         chunks.push(chunk);
-        if (bytes > MAX_BODY_BYTES) res.destroy();
+        if (bytes > MAX_PDF_BYTES) {
+          truncated = true;
+          res.destroy();
+        }
       });
-      res.on('end',   () => {
+      const finish = () => {
+        if (settled) return;
+        if (truncated) { done(null); return; }
         const buf = Buffer.concat(chunks);
         if (!ct.includes('pdf') && looksLikeHtml(buf)) {
           const embedded = extractEmbeddedPdfUrl(buf.toString('utf8'), url);
           if (embedded && embedded !== url) {
-            resolve(fetchPdfText(embedded, redirectsLeft - 1));
+            done(fetchPdfText(embedded, redirectsLeft - 1));
             return;
           }
-          resolve(null);
+          done(null);
           return;
         }
-        pdfParse(buf)
-          .then(data => resolve(data.text || null))
-          .catch(() => resolve(null));
-      });
-      res.on('close', () => {
-        const buf = Buffer.concat(chunks);
-        if (!ct.includes('pdf') && looksLikeHtml(buf)) {
-          const embedded = extractEmbeddedPdfUrl(buf.toString('utf8'), url);
-          if (embedded && embedded !== url) {
-            resolve(fetchPdfText(embedded, redirectsLeft - 1));
-            return;
-          }
-          resolve(null);
-          return;
-        }
-        pdfParse(buf)
-          .then(data => resolve(data.text || null))
-          .catch(() => resolve(null));
-      });
-      res.on('error', () => resolve(null));
+        parsePdfBuffer(buf).then(done);
+      };
+      res.on('end', finish);
+      res.on('close', finish);
+      res.on('error', () => done(null));
     });
-    req.on('timeout', () => { req.destroy(); resolve(null); });
-    req.on('error',   () => resolve(null));
+    req.on('timeout', () => { req.destroy(); done(null); });
+    req.on('error',   () => done(null));
   });
+}
+
+async function parsePdfBuffer(buf) {
+  const originalLog = console.log;
+  const originalWarn = console.warn;
+  const shouldSuppress = (args) => {
+    const msg = args.map(String).join(" ");
+    return /^Warning: (TT:|Indexing all PDF objects|Empty "FlateDecode" stream\.)/.test(msg);
+  };
+
+  console.log = (...args) => {
+    if (!shouldSuppress(args)) originalLog(...args);
+  };
+  console.warn = (...args) => {
+    if (!shouldSuppress(args)) originalWarn(...args);
+  };
+
+  try {
+    const data = await pdfParse(buf);
+    return data.text || null;
+  } catch {
+    return null;
+  } finally {
+    console.log = originalLog;
+    console.warn = originalWarn;
+  }
 }
 
 function looksLikeHtml(buf) {
