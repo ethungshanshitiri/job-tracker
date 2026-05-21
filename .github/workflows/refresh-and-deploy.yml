@@ -21,9 +21,6 @@ concurrency:
   group: "refresh-jobs-and-deploy"
   cancel-in-progress: true
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   scrape-and-deploy:
     runs-on: ubuntu-latest
@@ -54,11 +51,11 @@ jobs:
 
       - name: Checkout repository
         if: steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
         if: steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "24"
 
@@ -125,18 +122,18 @@ jobs:
 
       - name: Setup GitHub Pages
         if: steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       - name: Upload Pages artifact
         if: steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: "."
 
       - name: Deploy to GitHub Pages
         if: steps.schedule_gate.outputs.should_run == 'true'
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       - name: Summary
         if: steps.schedule_gate.outputs.should_run == 'true'
