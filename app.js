@@ -32,6 +32,11 @@
   const footerGenerated  = document.getElementById("footer-generated");
   const searchInput      = document.getElementById("search");
   const sortSelect       = document.getElementById("sort-select");
+  const filtersPanel     = document.getElementById("filters-panel");
+  const filtersToggle    = document.getElementById("filters-toggle");
+  const filtersToggleLabel = document.getElementById("filters-toggle-label");
+  const mobileFiltersQuery = window.matchMedia("(max-width: 860px)");
+  let filtersExpanded = false;
 
   // ── Boot ───────────────────────────────────────────────────────────────────
 
@@ -401,6 +406,25 @@
     // Reset
     document.getElementById("btn-reset").addEventListener("click", resetFilters);
     document.getElementById("btn-clear-empty")?.addEventListener("click", resetFilters);
+
+    filtersToggle.addEventListener("click", () => {
+      filtersExpanded = !filtersExpanded;
+      syncFiltersPanel();
+    });
+
+    if (mobileFiltersQuery.addEventListener) {
+      mobileFiltersQuery.addEventListener("change", syncFiltersPanel);
+    } else {
+      mobileFiltersQuery.addListener(syncFiltersPanel);
+    }
+    syncFiltersPanel();
+  }
+
+  function syncFiltersPanel() {
+    const shouldCollapse = mobileFiltersQuery.matches && !filtersExpanded;
+    filtersPanel.classList.toggle("is-collapsed", shouldCollapse);
+    filtersToggle.setAttribute("aria-expanded", String(!shouldCollapse));
+    filtersToggleLabel.textContent = shouldCollapse ? "Show" : "Hide";
   }
 
   function resetFilters() {

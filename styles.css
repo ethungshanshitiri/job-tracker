@@ -191,6 +191,28 @@ body {
   font-weight: 400;
 }
 
+.filters-toggle {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--paper-3);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink-2);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+
+.filters-toggle-icon {
+  transition: transform var(--transition);
+}
+
+.filters-panel:not(.is-collapsed) .filters-toggle-icon {
+  transform: rotate(180deg);
+}
+
 .btn-reset {
   font-size: 11px;
   font-family: 'IBM Plex Mono', monospace;
@@ -548,6 +570,30 @@ body {
   .job-row-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 6px; }
   .card-header { flex-direction: column; }
   .card-right { flex-direction: row; align-items: center; flex-wrap: wrap; }
+}
+
+@media (max-width: 860px) {
+  .filters-panel {
+    position: static;
+    top: auto;
+    padding: 18px;
+  }
+
+  .filters-toggle {
+    display: inline-flex;
+  }
+
+  .filters-header {
+    margin-bottom: 16px;
+  }
+
+  .filters-panel.is-collapsed .filters-header {
+    margin-bottom: 0;
+  }
+
+  .filters-panel.is-collapsed .filters-body {
+    display: none;
+  }
 }
 
 /* ─── Focus visible ───────────────────────────────────────────────── */
