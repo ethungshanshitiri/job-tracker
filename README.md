@@ -104,7 +104,7 @@ python3 -m http.server 8000
 
 ## Deployment
 
-The GitHub Actions workflow in `.github/workflows/refresh-and-deploy.yml` runs on a schedule (00:30 and 12:30 UTC) and also supports manual dispatch.
+The GitHub Actions workflow in `.github/workflows/refresh-and-deploy.yml` runs daily at Barcelona midnight. It uses separate UTC cron triggers for summer and winter time, then checks the intended scheduled time so GitHub runner delays do not skip the real midnight refresh. The workflow also supports manual dispatch.
 
 One-time setup required before the first deploy: in your repository's Settings, go to **Pages** and set the source to **GitHub Actions**. After that, every workflow run deploys the updated site automatically.
 

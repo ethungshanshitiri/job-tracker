@@ -2,8 +2,9 @@ name: Refresh Jobs & Deploy
 
 on:
   schedule:
-    # GitHub cron uses UTC. These cover Barcelona midnight in winter and summer.
-    - cron: "0 22,23 * * *"
+    # GitHub cron uses UTC. These cover Barcelona midnight in summer and winter.
+    - cron: "0 22 * * *"
+    - cron: "0 23 * * *"
   workflow_dispatch:
     inputs:
       force_deploy:
@@ -32,22 +33,72 @@ jobs:
     steps:
       - name: Check Barcelona midnight
         id: schedule_gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
-          if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
+          node <<'NODE'
+          const fs = require("fs");
 
-          LOCAL_HOUR=$(TZ=Europe/Madrid date +%H)
-          LOCAL_TIME=$(TZ=Europe/Madrid date '+%Y-%m-%d %H:%M %Z')
+          const eventName = process.env.EVENT_NAME;
+          const schedule = process.env.EVENT_SCHEDULE || "";
+          const output = process.env.GITHUB_OUTPUT;
 
-          echo "Barcelona time is ${LOCAL_TIME}"
-          if [ "$LOCAL_HOUR" = "00" ]; then
-            echo "should_run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "should_run=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping because this UTC trigger is not Barcelona midnight"
-          fi
+          function setOutput(shouldRun) {
+            fs.appendFileSync(output, `should_run=${shouldRun ? "true" : "false"}\n`);
+          }
+
+          if (eventName !== "schedule") {
+            setOutput(true);
+            process.exit(0);
+          }
+
+          const match = schedule.match(/^0\s+(\d{1,2})\s+\*\s+\*\s+\*$/);
+          if (!match) {
+            console.log(`Unrecognized schedule ${schedule}. Skipping.`);
+            setOutput(false);
+            process.exit(0);
+          }
+
+          const cronHour = Number(match[1]);
+          const now = new Date();
+          const candidates = [-1, 0, 1].map((offset) =>
+            Date.UTC(
+              now.getUTCFullYear(),
+              now.getUTCMonth(),
+              now.getUTCDate() + offset,
+              cronHour,
+              0,
+              0,
+              0
+            )
+          );
+          const intendedMs = Math.max(...candidates.filter((ms) => ms <= now.getTime() + 5 * 60 * 1000));
+          const intended = new Date(intendedMs);
+          const parts = new Intl.DateTimeFormat("en-GB", {
+            timeZone: "Europe/Madrid",
+            hour: "2-digit",
+            minute: "2-digit",
+            hourCycle: "h23",
+            timeZoneName: "short",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          }).formatToParts(intended);
+          const value = (type) => parts.find((part) => part.type === type)?.value || "";
+          const localHour = value("hour");
+          const localTime = `${value("year")}-${value("month")}-${value("day")} ${value("hour")}:${value("minute")} ${value("timeZoneName")}`;
+
+          console.log(`Triggered by cron ${schedule}`);
+          console.log(`Intended scheduled time UTC ${intended.toISOString()}`);
+          console.log(`Intended Barcelona time ${localTime}`);
+
+          const shouldRun = localHour === "00";
+          if (!shouldRun) {
+            console.log("Skipping because this scheduled UTC hour is not Barcelona midnight");
+          }
+          setOutput(shouldRun);
+          NODE
 
       - name: Checkout repository
         if: steps.schedule_gate.outputs.should_run == 'true'
