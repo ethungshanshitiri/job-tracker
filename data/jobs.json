@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-10T23:47:33.720Z",
-  "totalActive": 11,
+  "generatedAt": "2026-06-11T23:39:06.669Z",
+  "totalActive": 10,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,8 +10,8 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-06-10T23:17:47.187Z",
-      "pagesScanned": 26,
+      "checkedAt": "2026-06-11T23:12:55.495Z",
+      "pagesScanned": 27,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-10T23:18:21.142Z",
+      "checkedAt": "2026-06-11T23:13:30.543Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,7 +100,7 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-06-10T23:20:06.889Z",
+      "checkedAt": "2026-06-11T23:14:25.010Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-10T23:21:27.879Z",
+      "checkedAt": "2026-06-11T23:15:44.264Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -228,69 +228,13 @@
       ]
     },
     {
-      "id": "iit-bhubaneswar",
-      "name": "IIT Bhubaneswar",
-      "type": "IIT",
-      "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
-      "advertDate": null,
-      "status": "active",
-      "checkedAt": "2026-06-10T23:24:42.301Z",
-      "pagesScanned": 30,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        }
-      ]
-    },
-    {
       "id": "iit-gandhinagar",
       "name": "IIT Gandhinagar",
       "type": "IIT",
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-10T23:26:40.933Z",
+      "checkedAt": "2026-06-11T23:19:55.215Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +290,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-06/Advt.%20No._%20IITPKD_R_F_02_2026%20Dated_%2004%20June%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-10T23:28:59.754Z",
+      "checkedAt": "2026-06-11T23:22:17.252Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -377,10 +321,10 @@
       "id": "iit-dharwad",
       "name": "IIT Dharwad",
       "type": "IIT",
-      "url": "https://www.iitdh.ac.in/sites/default/files/2023-11/Faculty%20Recruitment%20Advt-V2-19-07-23.pdf",
-      "advertDate": "2023-07-19",
+      "url": "https://www.iitdh.ac.in/faculty-recruitment",
+      "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-10T23:29:57.644Z",
+      "checkedAt": "2026-06-11T23:23:19.088Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -436,7 +380,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-10T23:32:46.975Z",
+      "checkedAt": "2026-06-11T23:26:00.274Z",
       "pagesScanned": 15,
       "jobs": [
         {
@@ -492,8 +436,8 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-06-10T23:39:48.095Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-06-11T23:31:56.495Z",
+      "pagesScanned": 21,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -570,7 +514,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-10T23:43:30.808Z",
+      "checkedAt": "2026-06-11T23:35:13.008Z",
       "pagesScanned": 20,
       "jobs": [
         {
