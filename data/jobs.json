@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-14T23:23:59.510Z",
+  "generatedAt": "2026-06-15T23:57:12.332Z",
   "totalActive": 9,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-06-14T22:57:37.420Z",
+      "checkedAt": "2026-06-15T23:28:04.710Z",
       "pagesScanned": 27,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-14T22:58:12.255Z",
+      "checkedAt": "2026-06-15T23:28:42.948Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -94,14 +94,14 @@
       ]
     },
     {
-      "id": "iit-delhi",
-      "name": "IIT Delhi",
+      "id": "iit-kharagpur",
+      "name": "IIT Kharagpur",
       "type": "IIT",
-      "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
-      "advertDate": "2026-04-23",
+      "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
+      "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-14T22:59:07.901Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-06-15T23:30:29.269Z",
+      "pagesScanned": 2,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -138,6 +138,28 @@
         },
         {
           "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
           "department": "Computer Science & Engineering",
           "departmentFamily": "computer_science",
           "deadline": null,
@@ -156,7 +178,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-14T23:04:39.583Z",
+      "checkedAt": "2026-06-15T23:34:42.452Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -212,7 +234,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-06/Advt.%20No._%20IITPKD_R_F_02_2026%20Dated_%2004%20June%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-14T23:07:08.876Z",
+      "checkedAt": "2026-06-15T23:38:02.186Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -246,7 +268,7 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-14T23:08:03.672Z",
+      "checkedAt": "2026-06-15T23:39:13.019Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -302,7 +324,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-14T23:10:54.613Z",
+      "checkedAt": "2026-06-15T23:43:04.002Z",
       "pagesScanned": 15,
       "jobs": [
         {
@@ -358,7 +380,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-06-14T23:17:20.684Z",
+      "checkedAt": "2026-06-15T23:49:32.223Z",
       "pagesScanned": 21,
       "jobs": [
         {
@@ -436,7 +458,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-06-14T23:21:02.396Z",
+      "checkedAt": "2026-06-15T23:53:37.359Z",
       "pagesScanned": 20,
       "jobs": [
         {
