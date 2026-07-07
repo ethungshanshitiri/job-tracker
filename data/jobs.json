@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-06T23:22:43.948Z",
-  "totalActive": 10,
+  "generatedAt": "2026-07-07T23:19:06.790Z",
+  "totalActive": 11,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-07-06T22:54:41.514Z",
+      "checkedAt": "2026-07-07T22:49:40.748Z",
       "pagesScanned": 27,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-06T22:55:16.699Z",
+      "checkedAt": "2026-07-07T22:50:18.835Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,7 +100,7 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-07-06T22:55:56.091Z",
+      "checkedAt": "2026-07-07T22:51:08.418Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -150,13 +150,91 @@
       ]
     },
     {
+      "id": "iit-kharagpur",
+      "name": "IIT Kharagpur",
+      "type": "IIT",
+      "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
+      "advertDate": null,
+      "status": "active",
+      "checkedAt": "2026-07-07T22:52:28.855Z",
+      "pagesScanned": 2,
+      "jobs": [
+        {
+          "rank": "Assistant Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        }
+      ]
+    },
+    {
       "id": "iit-bhubaneswar",
       "name": "IIT Bhubaneswar",
       "type": "IIT",
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-06T23:00:31.937Z",
+      "checkedAt": "2026-07-07T22:55:55.655Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -212,7 +290,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-06T23:02:06.029Z",
+      "checkedAt": "2026-07-07T22:57:03.707Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -268,8 +346,8 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-06T23:06:10.947Z",
-      "pagesScanned": 21,
+      "checkedAt": "2026-07-07T23:02:15.208Z",
+      "pagesScanned": 22,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -324,7 +402,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-06T23:08:33.048Z",
+      "checkedAt": "2026-07-07T23:04:26.206Z",
       "pagesScanned": 21,
       "jobs": [
         {
@@ -380,7 +458,7 @@
       "url": "https://www.nitrkl.ac.in/Career/Faculty/",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-06T23:08:55.780Z",
+      "checkedAt": "2026-07-07T23:04:50.440Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -414,7 +492,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-07-06T23:14:38.196Z",
+      "checkedAt": "2026-07-07T23:10:56.706Z",
       "pagesScanned": 23,
       "jobs": [
         {
@@ -489,17 +567,17 @@
       "id": "nit-manipur",
       "name": "NIT Manipur",
       "type": "NIT",
-      "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
-      "advertDate": null,
+      "url": "https://www.nitmanipur.ac.in/Final-faculty-Advt-Level--10.pdf",
+      "advertDate": "2026-07-07",
       "status": "active",
-      "checkedAt": "2026-07-06T23:18:58.659Z",
-      "pagesScanned": 21,
+      "checkedAt": "2026-07-07T23:14:45.207Z",
+      "pagesScanned": 23,
       "jobs": [
         {
           "rank": "Assistant Professor",
           "department": "Electrical Engineering",
           "departmentFamily": "electrical_engineering",
-          "deadline": "2026-07-31",
+          "deadline": "2026-07-07",
           "rolling": true,
           "applicationMode": "Rolling basis",
           "confidence": "high",
@@ -510,7 +588,7 @@
           "rank": "Assistant Professor",
           "department": "Electronics & Communication Engineering",
           "departmentFamily": "electronics_communication",
-          "deadline": "2026-07-31",
+          "deadline": "2026-07-07",
           "rolling": true,
           "applicationMode": "Rolling basis",
           "confidence": "high",
@@ -521,7 +599,7 @@
           "rank": "Assistant Professor",
           "department": "Computer Science & Engineering",
           "departmentFamily": "computer_science",
-          "deadline": "2026-07-31",
+          "deadline": "2026-07-07",
           "rolling": true,
           "applicationMode": "Rolling basis",
           "confidence": "high",
@@ -532,7 +610,7 @@
           "rank": "Associate Professor",
           "department": "Electrical Engineering",
           "departmentFamily": "electrical_engineering",
-          "deadline": "2026-07-31",
+          "deadline": "2026-07-07",
           "rolling": true,
           "applicationMode": "Rolling basis",
           "confidence": "high",
@@ -543,7 +621,7 @@
           "rank": "Associate Professor",
           "department": "Electronics & Communication Engineering",
           "departmentFamily": "electronics_communication",
-          "deadline": "2026-07-31",
+          "deadline": "2026-07-07",
           "rolling": true,
           "applicationMode": "Rolling basis",
           "confidence": "high",
@@ -554,7 +632,7 @@
           "rank": "Associate Professor",
           "department": "Computer Science & Engineering",
           "departmentFamily": "computer_science",
-          "deadline": "2026-07-31",
+          "deadline": "2026-07-07",
           "rolling": true,
           "applicationMode": "Rolling basis",
           "confidence": "high",
