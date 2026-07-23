@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-22T23:19:10.157Z",
-  "totalActive": 13,
+  "generatedAt": "2026-07-23T23:16:01.595Z",
+  "totalActive": 11,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-07-22T22:51:09.031Z",
+      "checkedAt": "2026-07-23T22:44:44.113Z",
       "pagesScanned": 27,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T22:51:44.142Z",
+      "checkedAt": "2026-07-23T22:45:22.128Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -89,62 +89,6 @@
           "applicationMode": "Rolling basis",
           "confidence": "high",
           "deadlineType": "rolling_cutoff",
-          "notes": null
-        }
-      ]
-    },
-    {
-      "id": "iit-delhi",
-      "name": "IIT Delhi",
-      "type": "IIT",
-      "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
-      "advertDate": "2026-04-23",
-      "status": "active",
-      "checkedAt": "2026-07-22T22:52:38.483Z",
-      "pagesScanned": 30,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
           "notes": null
         }
       ]
@@ -156,7 +100,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T22:53:56.330Z",
+      "checkedAt": "2026-07-23T22:47:28.640Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -234,7 +178,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T22:57:20.283Z",
+      "checkedAt": "2026-07-23T22:51:03.063Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -290,7 +234,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T22:58:34.538Z",
+      "checkedAt": "2026-07-23T22:52:10.656Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +290,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T23:01:06.134Z",
+      "checkedAt": "2026-07-23T22:54:41.507Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -369,7 +313,7 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T23:02:12.844Z",
+      "checkedAt": "2026-07-23T22:56:01.122Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -425,7 +369,7 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T23:02:51.702Z",
+      "checkedAt": "2026-07-23T22:56:58.889Z",
       "pagesScanned": 23,
       "jobs": [
         {
@@ -481,8 +425,8 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-07-22T23:05:02.875Z",
-      "pagesScanned": 22,
+      "checkedAt": "2026-07-23T22:59:14.871Z",
+      "pagesScanned": 14,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -537,7 +481,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-07-22T23:11:02.815Z",
+      "checkedAt": "2026-07-23T23:05:36.300Z",
       "pagesScanned": 25,
       "jobs": [
         {
@@ -609,36 +553,13 @@
       ]
     },
     {
-      "id": "nit-agartala",
-      "name": "NIT Agartala",
-      "type": "NIT",
-      "url": "https://www.nita.ac.in/Notice_15-07-2026_JRF-ANRF-ECE-MSarkar-July2026_admin.pdf",
-      "advertDate": "2024-10-14",
-      "status": "active",
-      "checkedAt": "2026-07-22T23:13:28.088Z",
-      "pagesScanned": 4,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": "2026-07-22",
-          "rolling": false,
-          "applicationMode": "Fixed deadline",
-          "confidence": "high",
-          "deadlineType": "application_deadline",
-          "notes": null
-        }
-      ]
-    },
-    {
       "id": "nit-manipur",
       "name": "NIT Manipur",
       "type": "NIT",
       "url": "https://www.nitmanipur.ac.in/Final-faculty-Advt-Level--10.pdf",
       "advertDate": "2026-07-07",
       "status": "active",
-      "checkedAt": "2026-07-22T23:15:07.668Z",
+      "checkedAt": "2026-07-23T23:12:13.847Z",
       "pagesScanned": 23,
       "jobs": [
         {
