@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T23:12:23.368Z",
-  "totalActive": 13,
+  "generatedAt": "2026-08-03T23:24:23.769Z",
+  "totalActive": 14,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-08-02T22:43:01.529Z",
+      "checkedAt": "2026-08-03T22:49:19.461Z",
       "pagesScanned": 27,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:43:35.730Z",
+      "checkedAt": "2026-08-03T22:50:53.899Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,7 +100,7 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-08-02T22:44:09.834Z",
+      "checkedAt": "2026-08-03T22:51:42.715Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:45:30.069Z",
+      "checkedAt": "2026-08-03T22:53:09.072Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -234,7 +234,7 @@
       "url": "https://iitg.ac.in/iitg_page_details?page=61/fac_rec",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:45:50.417Z",
+      "checkedAt": "2026-08-03T22:53:29.477Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -268,7 +268,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:49:16.595Z",
+      "checkedAt": "2026-08-03T22:56:51.693Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -324,7 +324,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:50:17.330Z",
+      "checkedAt": "2026-08-03T22:58:12.385Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -380,7 +380,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:53:03.562Z",
+      "checkedAt": "2026-08-03T23:01:29.151Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -403,8 +403,8 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-08-02T22:55:04.891Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-08-03T23:02:21.495Z",
+      "pagesScanned": 26,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -459,8 +459,8 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:55:43.950Z",
-      "pagesScanned": 23,
+      "checkedAt": "2026-08-03T23:03:48.660Z",
+      "pagesScanned": 22,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -515,7 +515,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T22:57:49.436Z",
+      "checkedAt": "2026-08-03T23:06:09.290Z",
       "pagesScanned": 14,
       "jobs": [
         {
@@ -565,13 +565,91 @@
       ]
     },
     {
+      "id": "nit-rourkela",
+      "name": "NIT Rourkela",
+      "type": "NIT",
+      "url": "https://www.nitrkl.ac.in/Career/ClosedAdvt_Faculty",
+      "advertDate": "2021-04-16",
+      "status": "active",
+      "checkedAt": "2026-08-03T23:06:26.573Z",
+      "pagesScanned": 30,
+      "jobs": [
+        {
+          "rank": "Assistant Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": "2026-08-03",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": "rolling_cutoff",
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": "2026-08-03",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": "rolling_cutoff",
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": "2026-08-03",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": "rolling_cutoff",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": "2026-08-03",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": "rolling_cutoff",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": "2026-08-03",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": "rolling_cutoff",
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": "2026-08-03",
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": "rolling_cutoff",
+          "notes": null
+        }
+      ]
+    },
+    {
       "id": "nit-silchar",
       "name": "NIT Silchar",
       "type": "NIT",
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-08-02T23:03:37.784Z",
+      "checkedAt": "2026-08-03T23:12:49.768Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -649,7 +727,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-08-02T23:08:15.647Z",
+      "checkedAt": "2026-08-03T23:20:03.136Z",
       "pagesScanned": 24,
       "jobs": [
         {
