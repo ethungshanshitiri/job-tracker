@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-09T00:14:24.503Z",
-  "totalActive": 13,
+  "generatedAt": "2026-09-10T00:08:27.471Z",
+  "totalActive": 12,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-09-08T23:43:33.479Z",
+      "checkedAt": "2026-09-09T23:36:35.950Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-08T23:44:08.884Z",
+      "checkedAt": "2026-09-09T23:37:13.477Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,7 +100,7 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-09-08T23:44:34.786Z",
+      "checkedAt": "2026-09-09T23:37:41.152Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-08T23:45:53.677Z",
+      "checkedAt": "2026-09-09T23:39:05.667Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -234,7 +234,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-08T23:49:05.061Z",
+      "checkedAt": "2026-09-09T23:42:34.614Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -290,7 +290,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-08T23:50:09.669Z",
+      "checkedAt": "2026-09-09T23:43:47.549Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +346,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-08T23:53:39.413Z",
+      "checkedAt": "2026-09-09T23:47:58.577Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -369,8 +369,8 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-09-08T23:54:37.992Z",
-      "pagesScanned": 18,
+      "checkedAt": "2026-09-09T23:49:04.794Z",
+      "pagesScanned": 17,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -425,7 +425,7 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-08T23:55:51.010Z",
+      "checkedAt": "2026-09-09T23:49:30.954Z",
       "pagesScanned": 23,
       "jobs": [
         {
@@ -481,7 +481,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-08T23:57:19.827Z",
+      "checkedAt": "2026-09-09T23:51:04.107Z",
       "pagesScanned": 14,
       "jobs": [
         {
@@ -537,7 +537,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-09-09T00:03:19.558Z",
+      "checkedAt": "2026-09-09T23:57:01.049Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -605,51 +605,6 @@
           "confidence": "high",
           "deadlineType": null,
           "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
-        }
-      ]
-    },
-    {
-      "id": "nit-goa",
-      "name": "NIT Goa",
-      "type": "NIT",
-      "url": "https://www.nitgoa.ac.in/uploads/faculty_recruitment2026/Advt_Faculty%20_%20Recruitment%2031august2026.pdf",
-      "advertDate": "2026-08-31",
-      "status": "active",
-      "checkedAt": "2026-09-09T00:09:48.267Z",
-      "pagesScanned": 26,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": "2026-09-30",
-          "rolling": false,
-          "applicationMode": "Fixed deadline",
-          "confidence": "high",
-          "deadlineType": "application_deadline",
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": "2026-09-30",
-          "rolling": false,
-          "applicationMode": "Fixed deadline",
-          "confidence": "high",
-          "deadlineType": "application_deadline",
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": "2026-09-30",
-          "rolling": false,
-          "applicationMode": "Fixed deadline",
-          "confidence": "high",
-          "deadlineType": "application_deadline",
-          "notes": null
         }
       ]
     },
@@ -660,7 +615,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-09T00:10:23.588Z",
+      "checkedAt": "2026-09-10T00:04:11.321Z",
       "pagesScanned": 25,
       "jobs": [
         {
