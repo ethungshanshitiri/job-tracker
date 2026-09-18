@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-17T00:26:18.831Z",
-  "totalActive": 12,
+  "generatedAt": "2026-09-18T00:16:35.072Z",
+  "totalActive": 13,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,8 +10,8 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-09-16T23:56:29.689Z",
-      "pagesScanned": 26,
+      "checkedAt": "2026-09-17T23:46:29.536Z",
+      "pagesScanned": 30,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-16T23:57:06.399Z",
+      "checkedAt": "2026-09-17T23:47:15.893Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,8 +100,8 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-09-16T23:57:32.087Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-09-17T23:47:42.952Z",
+      "pagesScanned": 12,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-16T23:58:52.488Z",
+      "checkedAt": "2026-09-17T23:48:45.592Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -234,7 +234,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-17T00:02:17.714Z",
+      "checkedAt": "2026-09-17T23:51:55.126Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -290,7 +290,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-17T00:03:20.599Z",
+      "checkedAt": "2026-09-17T23:52:58.996Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +346,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-17T00:06:51.929Z",
+      "checkedAt": "2026-09-17T23:57:19.337Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -369,7 +369,7 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-09-17T00:07:46.448Z",
+      "checkedAt": "2026-09-17T23:58:19.313Z",
       "pagesScanned": 16,
       "jobs": [
         {
@@ -419,13 +419,69 @@
       ]
     },
     {
+      "id": "iit-goa",
+      "name": "IIT Goa",
+      "type": "IIT",
+      "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
+      "advertDate": null,
+      "status": "active",
+      "checkedAt": "2026-09-17T23:58:46.136Z",
+      "pagesScanned": 23,
+      "jobs": [
+        {
+          "rank": "Assistant Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        }
+      ]
+    },
+    {
       "id": "nit-calicut",
       "name": "NIT Calicut",
       "type": "NIT",
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-17T00:10:33.332Z",
+      "checkedAt": "2026-09-18T00:00:19.766Z",
       "pagesScanned": 14,
       "jobs": [
         {
@@ -481,7 +537,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-09-17T00:16:49.837Z",
+      "checkedAt": "2026-09-18T00:06:18.461Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -559,7 +615,7 @@
       "url": "https://www.nitgoa.ac.in/uploads/faculty_recruitment2026/Advt_Faculty%20_%20Recruitment%2031august2026.pdf",
       "advertDate": "2026-08-31",
       "status": "active",
-      "checkedAt": "2026-09-17T00:22:04.178Z",
+      "checkedAt": "2026-09-18T00:11:39.664Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -604,8 +660,8 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-17T00:22:33.032Z",
-      "pagesScanned": 25,
+      "checkedAt": "2026-09-18T00:12:15.923Z",
+      "pagesScanned": 26,
       "jobs": [
         {
           "rank": "Assistant Professor",
