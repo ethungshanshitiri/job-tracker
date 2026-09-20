@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-19T00:13:21.200Z",
-  "totalActive": 13,
+  "generatedAt": "2026-09-20T00:12:47.232Z",
+  "totalActive": 12,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-09-18T23:42:53.741Z",
+      "checkedAt": "2026-09-19T23:43:16.015Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-18T23:43:42.199Z",
+      "checkedAt": "2026-09-19T23:44:03.338Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,7 +100,7 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-09-18T23:44:08.738Z",
+      "checkedAt": "2026-09-19T23:44:28.469Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-18T23:45:28.804Z",
+      "checkedAt": "2026-09-19T23:45:52.612Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -234,7 +234,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-18T23:48:46.116Z",
+      "checkedAt": "2026-09-19T23:49:06.067Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -290,7 +290,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-18T23:49:53.226Z",
+      "checkedAt": "2026-09-19T23:50:13.442Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +346,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-18T23:53:06.367Z",
+      "checkedAt": "2026-09-19T23:53:39.264Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -369,7 +369,7 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-09-18T23:54:01.326Z",
+      "checkedAt": "2026-09-19T23:54:31.632Z",
       "pagesScanned": 15,
       "jobs": [
         {
@@ -425,7 +425,7 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-18T23:54:52.643Z",
+      "checkedAt": "2026-09-19T23:55:37.327Z",
       "pagesScanned": 23,
       "jobs": [
         {
@@ -481,7 +481,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-18T23:56:24.550Z",
+      "checkedAt": "2026-09-19T23:57:01.698Z",
       "pagesScanned": 14,
       "jobs": [
         {
@@ -537,119 +537,74 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-09-19T00:03:04.352Z",
-      "pagesScanned": 30,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": false,
-          "applicationMode": "See official page",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
-        }
-      ]
-    },
-    {
-      "id": "nit-goa",
-      "name": "NIT Goa",
-      "type": "NIT",
-      "url": "https://www.nitgoa.ac.in/uploads/faculty_recruitment2026/Advt_Faculty%20_%20Recruitment%2031august2026.pdf",
-      "advertDate": "2026-08-31",
-      "status": "active",
-      "checkedAt": "2026-09-19T00:08:31.080Z",
+      "checkedAt": "2026-09-20T00:02:54.320Z",
       "pagesScanned": 26,
       "jobs": [
         {
           "rank": "Assistant Professor",
           "department": "Electrical Engineering",
           "departmentFamily": "electrical_engineering",
-          "deadline": "2026-09-30",
+          "deadline": null,
           "rolling": false,
-          "applicationMode": "Fixed deadline",
+          "applicationMode": "See official page",
           "confidence": "high",
-          "deadlineType": "application_deadline",
-          "notes": null
+          "deadlineType": null,
+          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
         },
         {
           "rank": "Assistant Professor",
           "department": "Electronics & Communication Engineering",
           "departmentFamily": "electronics_communication",
-          "deadline": "2026-09-30",
+          "deadline": null,
           "rolling": false,
-          "applicationMode": "Fixed deadline",
+          "applicationMode": "See official page",
           "confidence": "high",
-          "deadlineType": "application_deadline",
-          "notes": null
+          "deadlineType": null,
+          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
         },
         {
           "rank": "Assistant Professor",
           "department": "Computer Science & Engineering",
           "departmentFamily": "computer_science",
-          "deadline": "2026-09-30",
+          "deadline": null,
           "rolling": false,
-          "applicationMode": "Fixed deadline",
+          "applicationMode": "See official page",
           "confidence": "high",
-          "deadlineType": "application_deadline",
-          "notes": null
+          "deadlineType": null,
+          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": false,
+          "applicationMode": "See official page",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electronics & Communication Engineering",
+          "departmentFamily": "electronics_communication",
+          "deadline": null,
+          "rolling": false,
+          "applicationMode": "See official page",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": false,
+          "applicationMode": "See official page",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": "Active application page found, but the closing date is stated relatively. Verify on official page."
         }
       ]
     },
@@ -660,7 +615,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-19T00:09:05.820Z",
+      "checkedAt": "2026-09-20T00:08:38.389Z",
       "pagesScanned": 26,
       "jobs": [
         {
