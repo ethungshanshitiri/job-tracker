@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-21T00:10:07.020Z",
-  "totalActive": 13,
+  "generatedAt": "2026-09-22T00:52:10.012Z",
+  "totalActive": 12,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-09-20T23:39:24.045Z",
+      "checkedAt": "2026-09-22T00:19:58.134Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-20T23:40:12.539Z",
+      "checkedAt": "2026-09-22T00:20:45.446Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,8 +100,8 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-09-20T23:40:40.718Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-09-22T00:21:13.409Z",
+      "pagesScanned": 12,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-20T23:42:04.425Z",
+      "checkedAt": "2026-09-22T00:22:17.995Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -228,69 +228,13 @@
       ]
     },
     {
-      "id": "iit-bhubaneswar",
-      "name": "IIT Bhubaneswar",
-      "type": "IIT",
-      "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
-      "advertDate": null,
-      "status": "active",
-      "checkedAt": "2026-09-20T23:45:46.949Z",
-      "pagesScanned": 30,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        }
-      ]
-    },
-    {
       "id": "iit-gandhinagar",
       "name": "IIT Gandhinagar",
       "type": "IIT",
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-20T23:46:50.782Z",
+      "checkedAt": "2026-09-22T00:26:41.369Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +290,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-20T23:50:29.477Z",
+      "checkedAt": "2026-09-22T00:30:15.686Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -369,8 +313,8 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-09-20T23:51:26.517Z",
-      "pagesScanned": 15,
+      "checkedAt": "2026-09-22T00:31:08.123Z",
+      "pagesScanned": 24,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -425,8 +369,8 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-20T23:51:52.033Z",
-      "pagesScanned": 22,
+      "checkedAt": "2026-09-22T00:32:34.121Z",
+      "pagesScanned": 23,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -481,7 +425,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-20T23:54:15.572Z",
+      "checkedAt": "2026-09-22T00:33:57.767Z",
       "pagesScanned": 14,
       "jobs": [
         {
@@ -537,7 +481,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-09-21T00:00:14.941Z",
+      "checkedAt": "2026-09-22T00:42:27.890Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -615,7 +559,7 @@
       "url": "https://www.nitgoa.ac.in/uploads/faculty_recruitment2026/Advt_Faculty%20_%20Recruitment%2031august2026.pdf",
       "advertDate": "2026-08-31",
       "status": "active",
-      "checkedAt": "2026-09-21T00:05:12.033Z",
+      "checkedAt": "2026-09-22T00:47:33.645Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -660,7 +604,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-09-21T00:05:47.613Z",
+      "checkedAt": "2026-09-22T00:48:06.612Z",
       "pagesScanned": 26,
       "jobs": [
         {
