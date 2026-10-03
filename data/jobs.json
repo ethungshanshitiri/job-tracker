@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-02T01:42:51.146Z",
-  "totalActive": 13,
+  "generatedAt": "2026-10-03T01:25:31.240Z",
+  "totalActive": 12,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
     {
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-10-02T01:09:32.718Z",
+      "checkedAt": "2026-10-03T00:47:32.080Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:10:13.260Z",
+      "checkedAt": "2026-10-03T00:48:13.905Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,8 +100,8 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-10-02T01:10:41.106Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-10-03T00:48:39.932Z",
+      "pagesScanned": 12,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:12:05.258Z",
+      "checkedAt": "2026-10-03T00:49:42.938Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -234,7 +234,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:15:14.343Z",
+      "checkedAt": "2026-10-03T00:53:00.028Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -290,7 +290,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:16:32.896Z",
+      "checkedAt": "2026-10-03T00:54:18.015Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +346,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:19:50.966Z",
+      "checkedAt": "2026-10-03T00:57:48.901Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -363,69 +363,13 @@
       ]
     },
     {
-      "id": "iit-dharwad",
-      "name": "IIT Dharwad",
-      "type": "IIT",
-      "url": "https://www.iitdh.ac.in/faculty-recruitment",
-      "advertDate": "2019-05-01",
-      "status": "active",
-      "checkedAt": "2026-10-02T01:20:42.862Z",
-      "pagesScanned": 26,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Electronics & Communication Engineering",
-          "departmentFamily": "electronics_communication",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        }
-      ]
-    },
-    {
       "id": "iit-goa",
       "name": "IIT Goa",
       "type": "IIT",
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:21:24.869Z",
+      "checkedAt": "2026-10-03T00:59:19.045Z",
       "pagesScanned": 22,
       "jobs": [
         {
@@ -481,7 +425,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:24:50.984Z",
+      "checkedAt": "2026-10-03T01:01:53.981Z",
       "pagesScanned": 14,
       "jobs": [
         {
@@ -537,7 +481,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-10-02T01:33:04.977Z",
+      "checkedAt": "2026-10-03T01:15:34.503Z",
       "pagesScanned": 26,
       "jobs": [
         {
@@ -615,7 +559,7 @@
       "url": "https://www.nitgoa.ac.in/uploads/faculty_recruitment2026/Corrigendum_Fac_Recruitment%202026.pdf",
       "advertDate": "2026-09-29",
       "status": "active",
-      "checkedAt": "2026-10-02T01:38:07.094Z",
+      "checkedAt": "2026-10-03T01:20:51.304Z",
       "pagesScanned": 19,
       "jobs": [
         {
@@ -693,7 +637,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-02T01:38:31.416Z",
+      "checkedAt": "2026-10-03T01:21:15.880Z",
       "pagesScanned": 26,
       "jobs": [
         {
