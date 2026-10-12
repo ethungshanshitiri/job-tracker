@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T01:06:44.593Z",
+  "generatedAt": "2026-10-12T01:21:24.910Z",
   "totalActive": 12,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-10-11T00:33:37.533Z",
+      "checkedAt": "2026-10-12T00:47:27.766Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T00:34:19.403Z",
+      "checkedAt": "2026-10-12T00:48:11.877Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,8 +100,8 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-10-11T00:34:48.649Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-10-12T00:48:40.292Z",
+      "pagesScanned": 4,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -156,7 +156,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T00:36:11.379Z",
+      "checkedAt": "2026-10-12T00:49:33.739Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -234,7 +234,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T00:40:03.257Z",
+      "checkedAt": "2026-10-12T00:52:55.460Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -290,7 +290,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T00:41:17.662Z",
+      "checkedAt": "2026-10-12T00:54:20.896Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -346,7 +346,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T00:44:44.930Z",
+      "checkedAt": "2026-10-12T00:58:01.639Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -369,8 +369,8 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-10-11T00:45:34.831Z",
-      "pagesScanned": 16,
+      "checkedAt": "2026-10-12T00:59:13.351Z",
+      "pagesScanned": 26,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -425,7 +425,7 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T00:46:53.122Z",
+      "checkedAt": "2026-10-12T01:01:10.588Z",
       "pagesScanned": 23,
       "jobs": [
         {
@@ -481,7 +481,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T00:48:15.833Z",
+      "checkedAt": "2026-10-12T01:03:12.917Z",
       "pagesScanned": 12,
       "jobs": [
         {
@@ -537,7 +537,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-10-11T00:56:18.227Z",
+      "checkedAt": "2026-10-12T01:11:03.861Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -615,7 +615,7 @@
       "url": "https://www.nitmanipur.ac.in/Final-NITMN-ADVERTISEMENT-FOR-RECRUITMENT.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-10-11T01:02:26.478Z",
+      "checkedAt": "2026-10-12T01:17:00.705Z",
       "pagesScanned": 27,
       "jobs": [
         {
