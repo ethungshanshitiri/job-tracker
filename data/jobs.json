@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T03:31:10.917Z",
+  "generatedAt": "2026-11-23T04:14:00.674Z",
   "totalActive": 12,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-11-22T02:55:29.618Z",
+      "checkedAt": "2026-11-23T03:36:59.592Z",
       "pagesScanned": 28,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-22T02:56:10.534Z",
+      "checkedAt": "2026-11-23T03:37:50.204Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,8 +100,8 @@
       "url": "https://home.iitd.ac.in/jobs-iitd/index.php",
       "advertDate": "2026-04-23",
       "status": "active",
-      "checkedAt": "2026-11-22T02:56:34.905Z",
-      "pagesScanned": 30,
+      "checkedAt": "2026-11-23T03:38:16.445Z",
+      "pagesScanned": 13,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -178,7 +178,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-22T02:58:13.330Z",
+      "checkedAt": "2026-11-23T03:39:37.539Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -256,7 +256,7 @@
       "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-22T03:01:28.952Z",
+      "checkedAt": "2026-11-23T03:43:05.358Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -312,7 +312,7 @@
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-22T03:02:38.866Z",
+      "checkedAt": "2026-11-23T03:44:24.931Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -368,7 +368,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-22T03:06:26.425Z",
+      "checkedAt": "2026-11-23T03:48:09.288Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -391,8 +391,8 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-11-22T03:07:22.384Z",
-      "pagesScanned": 15,
+      "checkedAt": "2026-11-23T03:49:07.969Z",
+      "pagesScanned": 24,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -447,8 +447,8 @@
       "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-22T03:08:14.238Z",
-      "pagesScanned": 23,
+      "checkedAt": "2026-11-23T03:50:07.310Z",
+      "pagesScanned": 22,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -503,7 +503,7 @@
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-22T03:10:18.277Z",
+      "checkedAt": "2026-11-23T03:52:39.924Z",
       "pagesScanned": 11,
       "jobs": [
         {
@@ -559,8 +559,8 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-11-22T03:15:27.454Z",
-      "pagesScanned": 28,
+      "checkedAt": "2026-11-23T03:57:52.175Z",
+      "pagesScanned": 30,
       "jobs": [
         {
           "rank": "Assistant Professor",
@@ -637,7 +637,7 @@
       "url": "https://nitmz.ac.in/wp-content/uploads/2026/10/NIT-Mizoram_Advertisement-for-Faculty-Recruitment-Vol-16_30.10.2026.pdf",
       "advertDate": "2026-10-30",
       "status": "active",
-      "checkedAt": "2026-11-22T03:28:35.489Z",
+      "checkedAt": "2026-11-23T04:11:14.916Z",
       "pagesScanned": 30,
       "jobs": [
         {
