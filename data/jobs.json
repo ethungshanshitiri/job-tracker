@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-24T07:31:06.748Z",
+  "generatedAt": "2026-11-25T05:59:40.614Z",
   "totalActive": 10,
   "scraper": "v2 — homepage crawl, 3-hop depth",
   "results": [
@@ -10,7 +10,7 @@
       "url": "https://www.iitm.ac.in/careers/prospective-faculty",
       "advertDate": "2025-04-11",
       "status": "active",
-      "checkedAt": "2026-11-24T06:51:54.522Z",
+      "checkedAt": "2026-11-25T05:18:24.722Z",
       "pagesScanned": 28,
       "jobs": [
         {
@@ -44,7 +44,7 @@
       "url": "https://www.iitb.ac.in/job-vacancy-ad/rolling-advertisement-no-l-1025-26",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-24T06:52:30.374Z",
+      "checkedAt": "2026-11-25T05:19:03.748Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -100,7 +100,7 @@
       "url": "https://erp.iitkgp.ac.in/Jobs/auth/facapps.htm",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-24T06:53:52.231Z",
+      "checkedAt": "2026-11-25T05:20:29.436Z",
       "pagesScanned": 2,
       "jobs": [
         {
@@ -172,13 +172,69 @@
       ]
     },
     {
+      "id": "iit-bhubaneswar",
+      "name": "IIT Bhubaneswar",
+      "type": "IIT",
+      "url": "https://www.iitbbs.ac.in/wp-content/uploads/2024/07/RollingFacultyAdvt2024.pdf",
+      "advertDate": null,
+      "status": "active",
+      "checkedAt": "2026-11-25T05:24:47.230Z",
+      "pagesScanned": 30,
+      "jobs": [
+        {
+          "rank": "Assistant Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Assistant Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Electrical Engineering",
+          "departmentFamily": "electrical_engineering",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        },
+        {
+          "rank": "Associate Professor",
+          "department": "Computer Science & Engineering",
+          "departmentFamily": "computer_science",
+          "deadline": null,
+          "rolling": true,
+          "applicationMode": "Rolling basis",
+          "confidence": "high",
+          "deadlineType": null,
+          "notes": null
+        }
+      ]
+    },
+    {
       "id": "iit-gandhinagar",
       "name": "IIT Gandhinagar",
       "type": "IIT",
       "url": "https://iitgn.ac.in/careers/faculty-rolling-advertisement",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-24T06:57:53.817Z",
+      "checkedAt": "2026-11-25T05:26:05.671Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -234,7 +290,7 @@
       "url": "https://facap.iitpkd.ac.in/sites/faculty-recruitment.iitp-portal.local/files/2026-07/Advt.%20No._%20IITPKD_R_F_03_2026%20Dated_%2009%20July%202026.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-24T07:01:30.676Z",
+      "checkedAt": "2026-11-25T05:30:10.689Z",
       "pagesScanned": 30,
       "jobs": [
         {
@@ -257,7 +313,7 @@
       "url": "https://www.iitdh.ac.in/faculty-recruitment",
       "advertDate": "2019-05-01",
       "status": "active",
-      "checkedAt": "2026-11-24T07:02:16.278Z",
+      "checkedAt": "2026-11-25T05:31:11.737Z",
       "pagesScanned": 24,
       "jobs": [
         {
@@ -307,69 +363,13 @@
       ]
     },
     {
-      "id": "iit-goa",
-      "name": "IIT Goa",
-      "type": "IIT",
-      "url": "https://iitgoa.ac.in/wp-content/uploads/Rolling-Advertisement-Updated-v1-21.pdf",
-      "advertDate": null,
-      "status": "active",
-      "checkedAt": "2026-11-24T07:02:53.036Z",
-      "pagesScanned": 23,
-      "jobs": [
-        {
-          "rank": "Assistant Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Assistant Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Electrical Engineering",
-          "departmentFamily": "electrical_engineering",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        },
-        {
-          "rank": "Associate Professor",
-          "department": "Computer Science & Engineering",
-          "departmentFamily": "computer_science",
-          "deadline": null,
-          "rolling": true,
-          "applicationMode": "Rolling basis",
-          "confidence": "high",
-          "deadlineType": null,
-          "notes": null
-        }
-      ]
-    },
-    {
       "id": "nit-calicut",
       "name": "NIT Calicut",
       "type": "NIT",
       "url": "https://nitc.ac.in/imgserver/uploads/attachments/Ed__abdfa712-5dc5-4488-a83a-69bbb09d0aba_.pdf",
       "advertDate": null,
       "status": "active",
-      "checkedAt": "2026-11-24T07:05:22.103Z",
+      "checkedAt": "2026-11-25T05:34:43.111Z",
       "pagesScanned": 11,
       "jobs": [
         {
@@ -425,7 +425,7 @@
       "url": "https://www.nits.ac.in/faculty-recruitment-2026",
       "advertDate": "2026-05-20",
       "status": "active",
-      "checkedAt": "2026-11-24T07:13:47.164Z",
+      "checkedAt": "2026-11-25T05:40:17.390Z",
       "pagesScanned": 28,
       "jobs": [
         {
@@ -503,7 +503,7 @@
       "url": "https://nitmz.ac.in/wp-content/uploads/2026/10/NIT-Mizoram_Advertisement-for-Faculty-Recruitment-Vol-16_30.10.2026.pdf",
       "advertDate": "2026-10-30",
       "status": "active",
-      "checkedAt": "2026-11-24T07:28:10.964Z",
+      "checkedAt": "2026-11-25T05:55:19.191Z",
       "pagesScanned": 30,
       "jobs": [
         {
